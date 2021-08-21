@@ -78,55 +78,54 @@ class Yahtzee {
     #threesSet;
     #fourSet;
     #fiveSet;
-    #sixSet;
-    #threeOfAKindSet;
+    #sixSet;   
     #fourOfAKindSet;
     #fullHouseSet;
     #smallStraightSet;
     #largeStraightSet;
     #chanceSet;
     #yahtzeeSet;
-
+    #threeOfAKindSets;
 
     constructor(ones) {
         this.round = 0;
         this.#ones = 0;
-        this.twos = 0;
-        this.threes = 0;
-        this.fours = 0;
-        this.fives = 0;
-        this.six = 0;
-        this.threeOfAKind = 0;
-        this.fourOfAKind = 0;
-        this.fullHouse = 0;
-        this.smallStraight = 0;
-        this.largeStraight = 0;
-        this.chance = 0;
-        this.yahtzee = 0;
-        this.oneSet = false;
-        this.twoSet = false;
-        this.threesSet = false;
-        this.fourSet = false;
-        this.fiveSet = false;
-        this.sixSet = false;
-        this.threeOfAKindSet = false;
-        this.fourOfAKindSet = false;
-        this.fullHouseSet = false;
-        this.smallStraightSet = false;
-        this.largeStraightSet = false;
-        this.chanceSet = false;
-        this.yahtzeeSet = false;
+        this.#twos = 0;
+        this.#threes = 0;
+        this.#fours = 0;
+        this.#fives = 0;
+        this.#six = 0;
+        this.#threeOfAKind = 0;
+        this.#fourOfAKind = 0;
+        this.#fullHouse = 0;
+        this.#smallStraight = 0;
+        this.#largeStraight = 0;
+        this.#chance = 0;
+        this.#yahtzee = 0;
+        this.#oneSet = false;
+        this.#twoSet = false;
+        this.#threesSet = false;
+        this.#fourSet = false;
+        this.#fiveSet = false;
+        this.#sixSet = false;
+        this.#threeOfAKindSets = false;
+        this.#fourOfAKindSet = false;
+        this.#fullHouseSet = false;
+        this.#smallStraightSet = false;
+        this.#largeStraightSet = false;
+        this.#chanceSet = false;
+        this.#yahtzeeSet = false;
     }
 
     // Ones
     get oneBool() {
-        return this.oneSet;
+        return this.#oneSet;
     }
     get GetOnes() {
         return this.#ones;
     }
     SetOneSet(oneSet) {
-        this.oneSet = oneSet;
+        this.#oneSet = oneSet;
     }
     SetOnes(ones) {
         this.#ones = ones;
@@ -134,142 +133,142 @@ class Yahtzee {
 
     // Twos
     get twoBool() {
-        return this.twoSet;
+        return this.#twoSet;
     }
     get GetTwos() {
-        return this.twos;
+        return this.#twos;
     }
     SetTwosSet(twoSet) {
-        this.twoSet = twoSet;
+        this.#twoSet = twoSet;
     }
     SetTwos(twos) {
-        this.twos = twos;
+        this.#twos = twos;
     }
 
     // Threes
     get threeBool() {
-        return this.threesSet;
+        return this.#threesSet;
     }
     get GetThrees() {
-        return this.threes;
+        return this.#threes;
     }
     SetThreeSet(threeSet) {
-        this.threesSet = threeSet;
+        this.#threesSet = threeSet;
     }
     SetThrees(threes) {
-        this.threes = threes;
+        this.#threes = threes;
     }
 
     // Fours
     get fourBool() {
-        return this.fourSet;
+        return this.#fourSet;
     }
     get GetFours() {
-        return this.fours;
+        return this.#fours;
     }
     SetFoursSet(fourSet) {
-        this.fourSet = fourSet;
+        this.#fourSet = fourSet;
     }
     SetFours(fours) {
-        this.fours = fours;
+        this.#fours = fours;
     }
 
     // Fives
     get fiveBool() {
-        return this.fiveSet;
+        return this.#fiveSet;
     }
     get GetFives() {
-        return this.fives;
+        return this.#fives;
     }
     SetFivesSet(fivesSet) {
-        this.fiveSet = fivesSet;
+        this.#fiveSet = fivesSet;
     }
     SetFives(fives) {
-        this.fives = fives;
+        this.#fives = fives;
     }
 
     // Sixes
     get sixBool() {
-        return this.sixSet;
+        return this.#sixSet;
     }
     get GetSixes() {
-        return this.six;
+        return this.#six;
     }
     SetSixSet(sixSet) {
-        this.sixSet = sixSet;
+        this.#sixSet = sixSet;
     }
     SetSixes(six) {
-        this.six = six;
+        this.#six = six;
     }
 
     // Three of a kind
     get threeOfAKindBool() {
-        return this.threeOfAKind;
+        return this.#threeOfAKindSets;
     }
     get GetThreeOfAKind() {
-        return this.threeOfAKind;
+        return this.#threeOfAKind;
     }
-    SetThreeOfAKindSet(threeOfAKindSet) {
-        this.threeOfAKindSet = threeOfAKindSet;
+    SetThreeOfAKindSet(threeOfAKindSets) {
+        this.#threeOfAKindSets = threeOfAKindSets;
     }
     SetThreeOfAKind(threeOfAKind) {
-        this.threeOfAKind = threeOfAKind;
+        this.#threeOfAKind = threeOfAKind;
     }
 
     // Four of a kind
     get fourOfAKindBool() {
-        return this.fourOfAKind;
+        return this.#fourOfAKindSet;
     }
     get GetFourOfAKind() {
-        return this.fourOfAKind;
+        return this.#fourOfAKind;
     }
     SetFourOfAKindSet(fourOfAKindSet) {
-        this.fourOfAKindSet = fourOfAKindSet;
+        this.#fourOfAKindSet = fourOfAKindSet;
     }
     SetFourOfAKind(fourOfAKind) {
-        this.fourOfAKind = fourOfAKind;
+        this.#fourOfAKind = fourOfAKind;
     }
 
     // Full House
     get fullHouseBool() {
-        return this.fullHouseSet;
+        return this.#fullHouseSet;
     }
     get GetFullHouse() {
-        return this.fullHouse;
+        return this.#fullHouse;
     }
     SetFullHouseSet(fullHouseSet) {
-        this.fullHouseSet = fullHouseSet;
+        this.#fullHouseSet = fullHouseSet;
     }
     SetFullHouse(fullHouse) {
-        this.fullHouse = fullHouse;
+        this.#fullHouse = fullHouse;
     }
 
     // Small Straight
     get smallStraightBool() {
-        return this.smallStraightSet;
+        return this.#smallStraightSet;
     }
     get GetSmallStraight() {
-        return this.smallStraight;
+        return this.#smallStraight;
     }
     SetSmallStraightSet(smallStraightSet) {
-        this.smallStraightSet = smallStraightSet;
+        this.#smallStraightSet = smallStraightSet;
     }
     SetSmallStraight(smallStraight) {
-        this.smallStraight = smallStraight;
+        this.#smallStraight = smallStraight;
     }
 
     // Large Straight
     get largeStraightBool() {
-        return this.largeStraightSet;
+        return this.#largeStraightSet;
     }
     get GetLargeStraight() {
-        return this.largeStraight;
+        return this.#largeStraight;
     }
     SetLargeStraightSet(largeStraightSet) {
-        this.largeStraightSet = largeStraightSet;
+        this.#largeStraightSet = largeStraightSet;
     }
     SetLargeStraight(largeStraight) {
-        this.largeStraight = largeStraight;
+        this.#largeStraight = largeStraight;
     }
 
 
@@ -355,7 +354,7 @@ class Yahtzee {
     CalculateFullHouse(diceSet) {
         var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
         var score = 0;
-        var threeOfAKind = false;
+        var threeOfAKinds = false;
         var counter = 0;
         var threeOfKindValue = 0;
 
@@ -368,19 +367,19 @@ class Yahtzee {
                 }
                 if (counter == 3) {
                     threeOfKindValue = diceArry[j];
-                    threeOfAKind = true;
+                    threeOfAKinds = true;
                     break;
                 }
             }
             if (counter >= 4) {
-                threeOfAKind = true;
+                threeOfAKinds = true;
                 break;
             }
         }
 
         counter = 0;
         var otherval = 0;
-        if (threeOfAKind == true) {
+        if (threeOfAKinds == true) {
             for (var i = 0; i < 5; i++) {
                 if (diceArry[i] != threeOfKindValue) {
                     otherval = diceArry[i]
