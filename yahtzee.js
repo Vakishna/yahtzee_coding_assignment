@@ -194,7 +194,7 @@ class Yahtzee {
     get GetFourOfAKind() {
         return this.fourOfAKind;
     }
-    SetForOfAKindSet(fourOfAKindSet) {
+    SetFourOfAKindSet(fourOfAKindSet) {
         this.fourOfAKindSet = fourOfAKindSet;
     }
     SetFourOfAKind(fourOfAKind) {
@@ -206,6 +206,13 @@ class Yahtzee {
     get fullHouseBool() {
         return this.fullHouseSet;
     }
+    get GetFullHouse() {
+        return this.fullHouse;
+    }
+    SetFullHouseSet(fullHouseSet) {
+        this.fullHouseSet = fullHouseSet;
+    }
+
 
 
     // Small Straight
@@ -768,8 +775,8 @@ $("#btnFourOfAKind").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
         var fourOfAKind = scores.CalculateScores(roll);
-        scores.SetFourOfAKind(fourOfAKind[8]);
-        scores.SetFoursSet(true);
+        scores.SetFourOfAKind(fourOfAKind[7]);
+        scores.SetFourOfAKindSet(true);
             
         roll = new DiceSet();
         roll.setQ();
@@ -786,9 +793,9 @@ $("#btnFourOfAKind").click(function () {
 $("#btnFullHouse").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
-        var fourOfAKind = scores.CalculateScores(roll);
+        var fullHouse = scores.CalculateScores(roll);
         scores.SetFourOfAKind(fourOfAKind[8]);
-        scores.SetFoursSet(true);
+        scores.SetFull(true);
 
         roll = new DiceSet();
         roll.setQ();
@@ -801,4 +808,22 @@ $("#btnFullHouse").click(function () {
     }
 });
 
+
+$("#btnSmallStraight").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var smallStraight = scores.CalculateScores(roll);
+        scores.Se(smallStraight[9]);
+        scores.SetFoursSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnFullHouse").addClass("selectedBtn");
+        $("#btnFullHouse").attr("disabled", "true");
+    }
+});
 
