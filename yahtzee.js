@@ -512,12 +512,16 @@ class Yahtzee {
 let scores = new Yahtzee();
 let roll = new DiceSet();
 let selectedDie = [true, true, true, true, true];
-
+$("#roll").addClass("btnAvailable");
 
 
 $("#roll").click(function() {
     if (roll.rollNumGet < 3) {
-        
+
+        if (roll.rollNumGet == 2) {
+            $("#roll").removeClass("btnAvailable");
+        }
+
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
         var rolledScores = scores.CalculateScores(roll);
         scores.SetScores(rolledScores);
@@ -535,6 +539,8 @@ $("#roll").click(function() {
                 roll.setQ();
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
+                $("#roll").addClass("btnAvailable");
+                $("#btnOnes").addClass("selectedBtn");              
                 $("#btnOnes").attr("disabled", "true");
             }
         });
@@ -551,14 +557,35 @@ $("#roll").click(function() {
                 roll.setQ();
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
+                $("#roll").addClass("btnAvailable");
                 $("#btnTwos").addClass("selectedBtn");
                 $("#btnTwos").attr("src", "images/" + this.d1 + ".png");
             }
         });
 
+        $("#btnThrees").click(function () {
+            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+                var threes = scores.CalculateScores(roll);
+                scores.SetThrees(threes[2]);
+                scores.SetThreeSet(true);
 
 
-        roll.setFaces(selectedDie);     
+                roll = new DiceSet();
+                roll.setQ();
+                scores.SetZeros();
+                selectedDie = [true, true, true, true, true];
+                $("#roll").addClass("btnAvailable");
+                $("#btnThrees").addClass("selectedBtn");
+                $("#btnThrees").attr("src", "images/" + this.d1 + ".png");
+            }
+        });
+
+        roll.setFaces(selectedDie);
+
+
+
+
 
     } else {
         alert("You have reached the maximum roles for this round.");
