@@ -56,9 +56,6 @@ class DiceSet {
             $("#d5").attr("src", "images/" + this.d5 + ".png");
         }
     }
-
-
-
 }
 
 class Yahtzee {
