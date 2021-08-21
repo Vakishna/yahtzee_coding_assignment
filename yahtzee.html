@@ -24,16 +24,19 @@
     <div id="gameboard">
         
         <div id="table">
-            <div id="dicePlayer">
+            <div id="dicePlayer" style="">
                 <img id="d1" src="images/q.png" alt="">
                 <img id="d2" src="images/q.png" alt="">
                 <img id="d3" src="images/q.png" alt="">
                 <img id="d4" src="images/q.png" alt="">
                 <img id="d5" src="images/q.png" alt="">
             </div>
-            <div style="margin: 50px 0 0 0;">
-                <div id="prompt" style="text-align: center; font-family: 'Orbitron'; color: white; font-size: 2em;">Please roll the dices to continue</div>
-            </div>
+            
+            <div style="margin: 25px 50px 0 50px;">
+                <hr>
+                <div id="prompt" style="text-align: center; font-family: 'Orbitron'; color: white; font-size: 2em;">Please roll the dices</div>
+
+            </div>            
         </div>
         <div id="scoreCard">
 
@@ -61,17 +64,17 @@
                 <tr>
                     <th>Fours</th>
                     <th id="fourPointsDisplay"></th>
-                    <th><button id="fours">select</button></th>
+                    <th><button id="btnFours">select</button></th>
                 </tr>
                 <tr>
                     <th>Fives</th>
                     <th id="fivePointsDisplay"></th>
-                    <th><button id="fives">select</button></th>
+                    <th><button id="btnFives">select</button></th>
                 </tr>
                 <tr>
                     <th>Sixes</th>
                     <th id="sixPointsDisplay"></th>
-                    <th><button id="sixes">select</button></th>
+                    <th><button id="btnSixes">select</button></th>
                 </tr>
                 <tr>
                     <th>Sum</th>
@@ -85,13 +88,13 @@
                 </tr>
                 <tr>
                     <th>Three Of A Kind</th>
-                    <th id="threeOfAKind"></th>
-                    <th><button>select</button></th>
+                    <th id="btnThreeOfAKind"></th>
+                    <th><button>Select</button></th>
                 </tr>
                 <tr>
                     <th>Four Of A Kind</th>
                     <th id="fourOfAKind"></th>
-                    <th><button>select</button></th>
+                    <th><button>Select</button></th>
                 </tr>
                 <tr>
                     <th>Full House</th>
@@ -125,17 +128,15 @@
                 </tr>
             </table>
 
-            <hr />
-            <button id="roll">Roll Dice</button>
-            <hr />
+
+            <button id="roll" style="margin-top: 20px;">Roll Dice</button>
         </div>
     </div>
 
     <script src="yahtzee.js"></script>
 
 
-    <footer style="display: inline;">Assignment DHTML Project - Vakishna Thayalan - 19279795
-    </footer>
+    <footer style="display: inline;">CSE2WDX_2021_08 A2: DHTML Project - &copy; Vakishna Thayalan 2021 - 19279795</footer>
 
 
 </body>

@@ -153,7 +153,7 @@ class Yahtzee {
         return this.fives;
     }
     SetFivesSet(fivesSet) {
-        this.fivesSet = fivesSet;
+        this.fiveSet = fivesSet;
     }
     SetFives(fives) {
         this.fives = fives;
@@ -177,17 +177,29 @@ class Yahtzee {
     get threeOfAKindBool() {
         return this.threeOfAKind;
     }
-
-
-
-
-
+    get GetThreeOfAKind() {
+        return this.threeOfAKind;
+    }
+    SetThreeOfAKindSet(threeOfAKindSet) {
+        this.threeOfAKindSet = threeOfAKindSet;
+    }
+    SetThreeOfAKind(threeOfAKind) {
+        this.threeOfAKind = threeOfAKind;
+    }
 
     // Four of a kind
     get fourOfAKindBool() {
         return this.fourOfAKind;
     }
-
+    get GetFourOfAKind() {
+        return this.fourOfAKind;
+    }
+    SetForOfAKindSet(fourOfAKindSet) {
+        this.fourOfAKindSet = fourOfAKindSet;
+    }
+    SetFourOfAKind(fourOfAKind) {
+        this.fourOfAKind = fourOfAKind;
+    }
 
 
     // Full House
@@ -463,7 +475,7 @@ class Yahtzee {
         if (this.fourBool == false) {
             $('#fourPointsDisplay').text(0);
         }
-        if (this.fiveBool == false) {
+        if (this.fiveSet == false) {
             $('#fivePointsDisplay').text(0);
         }
         if (this.sixBool == false) {
@@ -531,99 +543,15 @@ $("#roll").click(function() {
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
         var rolledScores = scores.CalculateScores(roll);
         scores.SetScores(rolledScores);
-
-
-        $("#btnOnes").click(function () {
-            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-
-                var ones = scores.CalculateScores(roll);
-                scores.SetOnes(ones[0]);
-                scores.SetOneSet(true);
-
-
-                roll = new DiceSet();                             
-                roll.setQ();
-                scores.SetZeros();
-                selectedDie = [true, true, true, true, true];
-                $("#roll").addClass("btnAvailable");
-                $("#prompt").text("Please roll the dices to continue");
-                $("#btnOnes").addClass("selectedBtn");              
-                $("#btnOnes").attr("disabled", "true");
-            }
-        });
-
-        $("#btnTwos").click(function () {
-            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-
-                var twos = scores.CalculateScores(roll);                
-                scores.SetTwos(twos[1]);
-                scores.SetTwosSet(true);
-
-
-                roll = new DiceSet();
-                roll.setQ();
-                scores.SetZeros();
-                selectedDie = [true, true, true, true, true];
-                $("#roll").addClass("btnAvailable");
-                $("#prompt").text("Please roll the dices to continue");
-                $("#btnTwos").addClass("selectedBtn");
-                $("#btnTwos").attr("src", "images/" + this.d1 + ".png");
-            }
-        });
-
-        $("#btnThrees").click(function () {
-            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-
-                var threes = scores.CalculateScores(roll);
-                scores.SetThrees(threes[2]);
-                scores.SetThreeSet(true);
-
-
-                roll = new DiceSet();
-                roll.setQ();
-                scores.SetZeros();
-                selectedDie = [true, true, true, true, true];
-                $("#roll").addClass("btnAvailable");
-                $("#prompt").text("Please roll the dices to continue");
-                $("#btnThrees").addClass("selectedBtn");
-                $("#btnThrees").attr("src", "images/" + this.d1 + ".png");
-            }
-        });
-
-        $("#btnThrees").click(function () {
-            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-
-                var threes = scores.CalculateScores(roll);
-                scores.SetThrees(threes[2]);
-                scores.SetThreeSet(true);
-
-                roll = new DiceSet();
-                roll.setQ();
-                scores.SetZeros();
-                selectedDie = [true, true, true, true, true];
-                $("#roll").addClass("btnAvailable");
-                $("#prompt").text("Please roll the dices to continue");
-                $("#btnThrees").addClass("selectedBtn");
-                $("#btnThrees").attr("src", "images/" + this.d1 + ".png");
-            }
-        });
-
-
-
-
-
-
-
         roll.setFaces(selectedDie);
-
-
-
-
 
     } else {
         alert("You have reached the maximum roles for this round.");
     }
 });
+
+
+// Dice One
 
 $("#d1").click(function() {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
@@ -699,4 +627,157 @@ $("#d5").click(function() {
     } else {
         alert("Please Roll The Dices");
     } 
+});
+
+$("#btnOnes").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var ones = scores.CalculateScores(roll);
+        scores.SetOnes(ones[0]);
+        scores.SetOneSet(true);
+
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnOnes").addClass("selectedBtn");
+        $("#btnOnes").attr("disabled", "true");
+    }
+});
+
+$("#btnTwos").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var twos = scores.CalculateScores(roll);
+        scores.SetTwos(twos[1]);
+        scores.SetTwosSet(true);
+
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnTwos").addClass("selectedBtn");
+        $("#btnTwos").attr("disabled", "true");
+    }
+});
+
+$("#btnThrees").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var threes = scores.CalculateScores(roll);
+        scores.SetThrees(threes[2]);
+        scores.SetThreeSet(true);
+
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnThrees").addClass("selectedBtn");
+        $("#btnThrees").attr("disabled", "true");
+    }
+});
+
+$("#btnFours").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fours = scores.CalculateScores(roll);
+        scores.SetFours(fours[3]);
+        scores.SetFoursSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnFours").addClass("selectedBtn");
+        $("#btnFours").attr("disabled", "true");
+    }
+});
+
+
+
+$("#btnFives").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fives = scores.CalculateScores(roll);
+        scores.SetFives(fives[4]);
+        scores.SetFivesSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnFives").addClass("selectedBtn");
+        $("#btnFives").attr("disabled", "true");
+    }
+});
+
+
+
+$("#btnSixes").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fives = scores.CalculateScores(roll);
+        scores.SetFives(fives[5]);
+        scores.SetFivesSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnSixes").addClass("selectedBtn");
+        $("#btnSixes").attr("disabled", "true");
+    }
+});
+
+
+$("#btnThreeOfAKind").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fives = scores.CalculateScores(roll);
+        scores.SetTh(fives[6]);
+        scores.SetFivesSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnSixes").addClass("selectedBtn");
+        $("#btnSixes").attr("disabled", "true");
+    }
+});
+
+
+$("#btnThreeOfAKind").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fives = scores.CalculateScores(roll);
+        scores.SetTh(fives[6]);
+        scores.SetFivesSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnSixes").addClass("selectedBtn");
+        $("#btnSixes").attr("disabled", "true");
+    }
 });
