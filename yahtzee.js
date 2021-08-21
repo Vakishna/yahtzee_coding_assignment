@@ -59,7 +59,7 @@ class DiceSet {
 }
 
 class Yahtzee {
-    
+   
     #ones;
     #twos;
     #threes;
