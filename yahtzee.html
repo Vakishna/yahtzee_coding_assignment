@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahtzee Game</title>
+    <link rel="stylesheet" href="yahtzee.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <script src="vendor/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="gameboard">
+        
+        <div id="table">
+            <div id="dicePlayer">
+                <img id="d1" src="images/q.png" alt="">
+                <img id="d2" src="images/q.png" alt="">
+                <img id="d3" src="images/q.png" alt="">
+                <img id="d4" src="images/q.png" alt="">
+                <img id="d5" src="images/q.png" alt="">
+            </div>
+            <div class="prompt">
+                <p></p>
+            </div>
+        </div>
+        <div id="scoreCard">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Points</th>
+                    <th>Select</th>    
+                </tr>
+                <tr>
+                    <th>Ones</th>
+                    <th id="onePointsDisplay"></th>
+                    <th><button id="ones">select</button></th>
+                </tr>
+                <tr>
+                    <th>Twos</th>
+                    <th id="twoPointsDisplay"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Threes</th>
+                    <th id="threePointsDisplay"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Fours</th>
+                    <th id="fourPointsDisplay"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Fives</th>
+                    <th id="fivePointsDisplay"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Sixes</th>
+                    <th id="sixPointsDisplay"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Sum</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Bonus</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Three Of A Kind</th>
+                    <th id="threeOfAKind"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Four Of A Kind</th>
+                    <th id="fourOfAKind"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Full House</th>
+                    <th id="fullHouse"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Small Straight</th>
+                    <th id="smallStraight"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Large Straight</th>
+                    <th id="largeStraight"></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Chance</th>
+                    <th></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Yahtzee</th>
+                    <th></th>
+                    <th><button>select</button></th>
+                </tr>
+                <tr>
+                    <th>Total Score</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+
+            <br>
+            <button id="roll">Roll Dice</button>
+        </div>
+    </div>
+
+    <script src="yahtzee.js"></script>
+    
+</body>
+</html>

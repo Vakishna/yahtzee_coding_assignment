@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+}
+body {
+    background-color: green;
+    margin: auto;
+
+}
+
+#gameboard {
+    display: flex;
+    min-height: 100%;
+    
+}
+
+#table {
+    flex: 70%;
+    margin: auto;    
+}
+
+table, th, td {
+    font-family: 'Inconsolata';
+    font-weight: normal;
+}
+
+#dicePlayer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+#scoreCard {
+    flex: 30%;
+    color: white;
+    margin: auto;
+
+    height: 100%;
+}
+
+#scoreCard table, td, th {
+    border: 1px solid white;
+    
+}
+  
+#scoreCard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+img {
+    margin: 5px;
+
+    border-radius: 18px;
+}
