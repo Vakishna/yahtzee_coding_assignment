@@ -212,6 +212,9 @@ class Yahtzee {
     SetFullHouseSet(fullHouseSet) {
         this.fullHouseSet = fullHouseSet;
     }
+    SetFullHouse(fullHouse) {
+        this.fullHouse = fullHouse;
+    }
 
 
 
