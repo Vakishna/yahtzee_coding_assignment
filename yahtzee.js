@@ -446,19 +446,19 @@ class Yahtzee {
             $('#sixPointsDisplay').text(scoresArr[5]);
         }
         if (this.threeOfAKindBool == false) {
-            $('#threeOfAKind').text(scoresArr[6]);
+            $('#threeOfAKindDisplay').text(scoresArr[6]);
         }
         if (this.fourOfAKindBool == false) {
-            $('#fourOfAKind').text(scoresArr[7]);
+            $('#fourOfAKindDisplay').text(scoresArr[7]);
         }
         if (this.fullHouseBool == false) {
-            $("#fullHouse").text(scoresArr[8]);
+            $("#fullHouseDisplay").text(scoresArr[8]);
         }
         if (this.smallStraightBool == false) {
-            $("#smallStraight").text(scoresArr[9]);
+            $("#smallStraightDisplay").text(scoresArr[9]);
         }
         if (this.largeStraightBool == false) {
-            $("#largeStraight").text(scoresArr[10]);
+            $("#largeStraightDisplay").text(scoresArr[10]);
         }
     }
 
@@ -482,19 +482,19 @@ class Yahtzee {
             $('#sixPointsDisplay').text(0);
         }
         if (this.threeOfAKindBool == false) {
-            $('#threeOfAKind').text(0);
+            $('#threeOfAKindDisplay').text(0);
         }
         if (this.fourOfAKindBool == false) {
-            $('#fourOfAKind').text(0);
+            $('#fourOfAKindDisplay').text(0);
         }
         if (this.fullHouseBool == false) {
-            $("#fullHouse").text(0);
+            $("#fullHouseDisplay").text(0);
         }
         if (this.smallStraightBool == false) {
-            $("#smallStraight").text(0);
+            $("#smallStraightDisplay").text(0);
         }
         if (this.largeStraightBool == false) {
-            $("#largeStraight").text(0);
+            $("#largeStraightDisplay").text(0);
         }
     }
 
@@ -729,9 +729,9 @@ $("#btnFives").click(function () {
 $("#btnSixes").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
-        var fives = scores.CalculateScores(roll);
-        scores.SetFives(fives[5]);
-        scores.SetFivesSet(true);
+        var sixes = scores.CalculateScores(roll);
+        scores.SetSixes(sixes[5]);
+        scores.SetSixSet(true);
 
         roll = new DiceSet();
         roll.setQ();
@@ -768,9 +768,9 @@ $("#btnThreeOfAKind").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
         var fives = scores.CalculateScores(roll);
-        scores.SetTh(fives[6]);
+        scores.SetTh(fives[7]);
         scores.SetFivesSet(true);
-
+            
         roll = new DiceSet();
         roll.setQ();
         scores.SetZeros();
