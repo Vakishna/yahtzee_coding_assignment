@@ -15,19 +15,19 @@ class DiceSet {
     rollDie(d1set, d2set, d3set, d4set, d5set) {
         this.rollNum+=1;
         if (d1set == true) {
-            this.d1 = Math.floor(Math.random() * 5)+1;
+            this.d1 = Math.floor(Math.random() * 6)+1;
         } 
         if (d2set == true) {
-            this.d2 = Math.floor(Math.random() * 5)+1;
+            this.d2 = Math.floor(Math.random() * 6)+1;
         }
         if (d3set == true) {
-            this.d3 = Math.floor(Math.random() * 5)+1;
+            this.d3 = Math.floor(Math.random() * 6)+1;
         }
         if (d4set == true) {
-            this.d4 = Math.floor(Math.random() * 5)+1;
+            this.d4 = Math.floor(Math.random() * 6)+1;
         }
         if (d5set == true) {
-            this.d5 = Math.floor(Math.random() * 5)+1;
+            this.d5 = Math.floor(Math.random() * 6)+1;
         }
     }
 
