@@ -558,7 +558,7 @@ $("#roll").click(function() {
 
         if (roll.rollNumGet == 2) {
             $("#roll").removeClass("btnAvailable");
-            $("#prompt").text("You have no more rolls, you must select an option");
+            $("#prompt").text("You have no more rolls.");
         } else {
             $("#prompt").text("You have " + rollLeft + " rolls left.");
         }
@@ -782,8 +782,8 @@ $("#btnThreeOfAKind").click(function () {
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
-        $("#btnSixes").addClass("selectedBtn");
-        $("#btnSixes").attr("disabled", "true");
+        $("#btnThreeOfAKind").addClass("selectedBtn");
+        $("#btnThreeOfAKind").attr("disabled", "true");
     }
 });
 
