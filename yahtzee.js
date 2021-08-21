@@ -811,8 +811,8 @@ $("#btnFullHouse").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
         var fullHouse = scores.CalculateScores(roll);
-        scores.SetFourOfAKind(fourOfAKind[8]);
-        scores.SetFull(true);
+        scores.SetFullHouse(fullHouse[8]);
+        scores.SetFullHouseSet(true);
 
         roll = new DiceSet();
         roll.setQ();
@@ -844,12 +844,12 @@ $("#btnSmallStraight").click(function () {
     }
 });
 
-$("#btnSmallStraight").click(function () {
+$("#btnLargeStraight").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
-        var smallStraight = scores.CalculateScores(roll);
-        scores.SetSmallStraight(smallStraight[9]);
-        scores.SetSmallStraightSet(true);
+        var largeStraight = scores.CalculateScores(roll);
+        scores.SetLargeStraight(largeStraight[10]);
+        scores.SetLargeStraightSet(true);
 
         roll = new DiceSet();
         roll.setQ();
@@ -857,7 +857,8 @@ $("#btnSmallStraight").click(function () {
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
-        $("#btnSmallStraight").addClass("selectedBtn");
-        $("#btnSmallStraight").attr("disabled", "true");
+        $("#btnLargeStraight").addClass("selectedBtn");
+        $("#btnLargeStraight").attr("disabled", "true");
     }
 });
+
