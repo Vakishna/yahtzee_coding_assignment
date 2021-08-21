@@ -207,14 +207,14 @@ class Yahtzee {
         return this.largeStraightSet;
     }
 
-    
+
 
 
     CalculateUpperPoints(diceSet, rollNum) {
         var diceArr = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
         var score = 0;
-        
-        for(var i = 0; i < 5; i++) {
+
+        for (var i = 0; i < 5; i++) {
             if (diceArr[i] == rollNum) {
                 score += rollNum;
             }
@@ -222,16 +222,16 @@ class Yahtzee {
 
         return score;
     }
-    
+
     CalculateThreeOfKind(diceSet) {
         var diceArr = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
         var score = 0;
         var threeOfAKind = false;
         var counter = 0;
 
-        for(var i = 1; i <= 6; i++) {
+        for (var i = 1; i <= 6; i++) {
             counter = 0;
-            for(var j = 0; j < 5; j++) {
+            for (var j = 0; j < 5; j++) {
                 if (diceArr[j] == i) {
                     counter++;
                 }
@@ -247,7 +247,7 @@ class Yahtzee {
         }
 
         if (threeOfAKind == true) {
-            for(var i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 score += diceArr[i];
             }
         }
@@ -261,9 +261,9 @@ class Yahtzee {
         var fourOfAKind = false;
         var counter = 0;
 
-        for(var i = 1; i <= 6; i++) {
+        for (var i = 1; i <= 6; i++) {
             counter = 0;
-            for(var j = 0; j < 5; j++) {
+            for (var j = 0; j < 5; j++) {
                 if (diceArry[j] == i) {
                     counter++;
                 }
@@ -277,9 +277,9 @@ class Yahtzee {
                 break;
             }
         }
-        
+
         if (fourOfAKind == true) {
-            for(var i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 score += diceArry[i];
             }
         }
@@ -295,9 +295,9 @@ class Yahtzee {
         var threeOfKindValue = 0;
 
 
-        for(var i = 1; i <= 6; i++) {
+        for (var i = 1; i <= 6; i++) {
             counter = 0;
-            for(var j = 0; j < 5; j++) {
+            for (var j = 0; j < 5; j++) {
                 if (diceArry[j] == i) {
                     counter++;
                 }
@@ -312,11 +312,11 @@ class Yahtzee {
                 break;
             }
         }
-        
+
         counter = 0;
         var otherval = 0;
         if (threeOfAKind == true) {
-            for(var i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 if (diceArry[i] != threeOfKindValue) {
                     otherval = diceArry[i]
                 }
@@ -358,7 +358,7 @@ class Yahtzee {
         var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
         var sortedDiceSet = this.BubbleSort(diceArry, diceArry.length);
         var smallStraight = false;
-        var counter = 0; 
+        var counter = 0;
 
         var start = sortedDiceSet[0]
 
@@ -401,7 +401,7 @@ class Yahtzee {
                 counter++
                 continue;
             }
-            else if (sortedDiceSet[i] == sortedDiceSet[i - 1]+1) {
+            else if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
                 break;
             }
         }
@@ -414,6 +414,77 @@ class Yahtzee {
     }
 
 
+    SetScores(scoresArr) {
+        if (this.oneBool == false) {
+            $('#onePointsDisplay').text(scoresArr[0]);
+        }
+        if (this.twoBool == false) {
+            $('#twoPointsDisplay').text(scoresArr[1]);
+        }
+        if (this.threeBool == false) {
+            $('#threePointsDisplay').text(scoresArr[2]);
+        }
+        if (this.fourBool == false) {
+            $('#fourPointsDisplay').text(scoresArr[3]);
+        }
+        if (this.fiveBool == false) {
+            $('#fivePointsDisplay').text(scoresArr[4]);
+        }
+        if (this.sixBool == false) {
+            $('#sixPointsDisplay').text(scoresArr[5]);
+        }
+        if (this.threeOfAKindBool == false) {
+            $('#threeOfAKind').text(scoresArr[6]);
+        }
+        if (this.fourOfAKindBool == false) {
+            $('#fourOfAKind').text(scoresArr[7]);
+        }
+        if (this.fullHouseBool == false) {
+            $("#fullHouse").text(scoresArr[8]);
+        }
+        if (this.smallStraightBool == false) {
+            $("#smallStraight").text(scoresArr[9]);
+        }
+        if (this.largeStraightBool == false) {
+            $("#largeStraight").text(scoresArr[10]);
+        }
+    }
+
+    SetZeros() {
+        if (this.oneBool == false) {
+            $('#onePointsDisplay').text(0);
+        }
+        if (this.twoBool == false) {
+            $('#twoPointsDisplay').text(0);
+        }
+        if (this.threeBool == false) {
+            $('#threePointsDisplay').text(0);
+        }
+        if (this.fourBool == false) {
+            $('#fourPointsDisplay').text(0);
+        }
+        if (this.fiveBool == false) {
+            $('#fivePointsDisplay').text(0);
+        }
+        if (this.sixBool == false) {
+            $('#sixPointsDisplay').text(0);
+        }
+        if (this.threeOfAKindBool == false) {
+            $('#threeOfAKind').text(0);
+        }
+        if (this.fourOfAKindBool == false) {
+            $('#fourOfAKind').text(0);
+        }
+        if (this.fullHouseBool == false) {
+            $("#fullHouse").text(0);
+        }
+        if (this.smallStraightBool == false) {
+            $("#smallStraight").text(0);
+        }
+        if (this.largeStraightBool == false) {
+            $("#largeStraight").text(0);
+        }
+    }
 
 
 
@@ -449,60 +520,16 @@ $("#roll").click(function() {
         
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
         var rolledScores = scores.CalculateScores(roll);
-
-        if (scores.oneBool == false) {
-            $('#onePointsDisplay').text(rolledScores[0]);
-        }
-
-        if (scores.twoBool == false) {
-            $('#twoPointsDisplay').text(rolledScores[1]);
-        }
-
-        if (scores.threeBool == false) {
-            $('#threePointsDisplay').text(rolledScores[2]);
-        }
-
-        if (scores.fourBool == false) {
-            $('#fourPointsDisplay').text(rolledScores[3]);
-        }
-
-        if (scores.fiveBool == false) {
-            $('#fivePointsDisplay').text(rolledScores[4]);
-        }
-
-        if (scores.sixBool == false) {
-            $('#sixPointsDisplay').text(rolledScores[5]);
-        }
-
-        if (scores.threeOfAKindBool == false) {
-            $('#threeOfAKind').text(rolledScores[6]);
-        }
-
-        if (scores.fourOfAKindBool == false) {
-            $('#fourOfAKind').text(rolledScores[7]);
-        }
-
-        if (scores.fullHouseBool == false) {
-            $("#fullHouse").text(rolledScores[8]);
-        }
-
-        if (scores.smallStraightBool == false) {
-            $("#smallStraight").text(rolledScores[9]);
-        }
-
-
-        if (scores.largeStraightBool == false) {
-            $("#largeStraight").text(rolledScores[10]);
-        }
+        scores.SetScores(rolledScores);
 
 
         $("#ones").click(function () {
             if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
                 scores.SetOnes(rolledScores[0]);              
                 scores.SetOneSet(true);
-                roll = new DiceSet();
-                console.log(roll.rollNumGet);
+                roll = new DiceSet();                             
                 roll.setQ();
+                scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
                 $("#ones").attr("disabled", "true");
             }
