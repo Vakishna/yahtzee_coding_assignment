@@ -748,8 +748,8 @@ $("#btnSixes").click(function () {
 $("#btnThreeOfAKind").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
-        var fives = scores.CalculateScores(roll);
-        scores.SetTh(fives[6]);
+        var threeOfAKind = scores.CalculateScores(roll);
+        scores.SetThreeOfAKind(threeOfAKind[6]);
         scores.SetFivesSet(true);
 
         roll = new DiceSet();
