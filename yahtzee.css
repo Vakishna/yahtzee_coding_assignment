@@ -4,7 +4,7 @@ html, body {
 body {
     /*background-color: #4B778D;*/
     background-color: #032B43;
-    font-family: 'IBM Plex Sans', monospace;
+    font-family: 'IBM Plex Sans', sans;
     font-weight: normal;
 }
 
@@ -78,6 +78,18 @@ button:hover {
     background-color: #4B778D;
 }
 
+#banner {
+    display: flex;
+    justify-content: center;
+    font-family: 'lobster', cursive;
+    color: white;
+    padding: 5px;
+    font-size: 6em;
+    margin: 25px 0 25px 0;
+    align-content: center;
+}
+
+
 #table {
     flex: 75%;
     margin: auto;
@@ -102,7 +114,7 @@ table, th, td {
 #scoreCard {
     flex: 25%;
     color: white;
-    margin: auto 25px auto 25px;
+    margin: auto 5px auto 5px;
     
 }
 
