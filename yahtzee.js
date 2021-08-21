@@ -87,7 +87,7 @@ class Yahtzee {
     #yahtzeeSet;
     #threeOfAKindSets;
 
-    constructor(ones) {
+    constructor() {
         this.round = 0;
         this.#ones = 0;
         this.#twos = 0;
