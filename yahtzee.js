@@ -201,7 +201,6 @@ class Yahtzee {
         this.fourOfAKind = fourOfAKind;
     }
 
-
     // Full House
     get fullHouseBool() {
         return this.fullHouseSet;
@@ -215,8 +214,6 @@ class Yahtzee {
     SetFullHouse(fullHouse) {
         this.fullHouse = fullHouse;
     }
-
-
 
     // Small Straight
     get smallStraightBool() {
@@ -232,13 +229,19 @@ class Yahtzee {
         this.smallStraight = smallStraight;
     }
 
-
     // Large Straight
     get largeStraightBool() {
         return this.largeStraightSet;
     }
-
-    
+    get GetLargeStraight() {
+        return this.largeStraight;
+    }
+    SetLargeStraightSet(largeStraightSet) {
+        this.largeStraightSet = largeStraightSet;
+    }
+    SetLargeStraight(largeStraight) {
+        this.largeStraight = largeStraight;
+    }
 
 
 
@@ -841,3 +844,20 @@ $("#btnSmallStraight").click(function () {
     }
 });
 
+$("#btnSmallStraight").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var smallStraight = scores.CalculateScores(roll);
+        scores.SetSmallStraight(smallStraight[9]);
+        scores.SetSmallStraightSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnSmallStraight").addClass("selectedBtn");
+        $("#btnSmallStraight").attr("disabled", "true");
+    }
+});
