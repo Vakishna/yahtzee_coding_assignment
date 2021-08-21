@@ -110,7 +110,7 @@ class Yahtzee {
     get GetTwos() {
         return this.twos;
     }
-    SetTwoSet(twoSet) {
+    SetTwosSet(twoSet) {
         this.twoSet = twoSet;
     }
     SetTwos(twos) {
@@ -523,17 +523,39 @@ $("#roll").click(function() {
         scores.SetScores(rolledScores);
 
 
-        $("#ones").click(function () {
+        $("#btnOnes").click(function () {
             if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-                scores.SetOnes(rolledScores[0]);              
+
+                var ones = scores.CalculateScores(roll);
+                scores.SetOnes(ones[0]);
                 scores.SetOneSet(true);
+
+
                 roll = new DiceSet();                             
                 roll.setQ();
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
-                $("#ones").attr("disabled", "true");
+                $("#btnOnes").attr("disabled", "true");
             }
         });
+
+        $("#btnTwos").click(function () {
+            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+                var twos = scores.CalculateScores(roll);                
+                scores.SetTwos(twos[1]);
+                scores.SetTwosSet(true);
+
+
+                roll = new DiceSet();
+                roll.setQ();
+                scores.SetZeros();
+                selectedDie = [true, true, true, true, true];
+                $("#btnTwos").attr("disabled", "true");
+            }
+        });
+
+
 
         roll.setFaces(selectedDie);     
 
