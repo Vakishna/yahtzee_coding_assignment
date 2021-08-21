@@ -1,1 +1,1 @@
-﻿![Alt text](images/interface.png?raw=true "Gameplay")
+﻿![Alt text](https://github.com/Vakishna/yahtzee_coding_assignment/blob/master/images/interface.png?raw=true "Gameplay")
