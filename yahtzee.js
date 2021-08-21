@@ -59,9 +59,38 @@ class DiceSet {
 }
 
 class Yahtzee {
-    constructor() {
+    
+    #ones;
+    #twos;
+    #threes;
+    #fours;
+    #fives;
+    #six;
+    #threeOfAKind;
+    #fourOfAKind;
+    #fullHouse;
+    #smallStraight;
+    #largeStraight;
+    #chance;
+    #yahtzee;
+    #oneSet;
+    #twoSet;
+    #threesSet;
+    #fourSet;
+    #fiveSet;
+    #sixSet;
+    #threeOfAKindSet;
+    #fourOfAKindSet;
+    #fullHouseSet;
+    #smallStraightSet;
+    #largeStraightSet;
+    #chanceSet;
+    #yahtzeeSet;
+
+
+    constructor(ones) {
         this.round = 0;
-        this.ones = 0;
+        this.#ones = 0;
         this.twos = 0;
         this.threes = 0;
         this.fours = 0;
@@ -94,13 +123,13 @@ class Yahtzee {
         return this.oneSet;
     }
     get GetOnes() {
-        return this.ones;
+        return this.#ones;
     }
     SetOneSet(oneSet) {
         this.oneSet = oneSet;
     }
     SetOnes(ones) {
-        this.ones = ones;
+        this.#ones = ones;
     }
 
     // Twos
