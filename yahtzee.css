@@ -9,6 +9,7 @@ body {
 }
 
 
+
 button {
     background-color: #4B778D;
     border: none;
@@ -17,7 +18,7 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 1px 1px;
-    padding: 4px 8px;
+    padding: 3px 8px;
     transition-duration: 0.5s;
     border: 2px solid #f44336;
     cursor: pointer;
@@ -38,6 +39,12 @@ button {
     cursor: pointer;
     width: 100%;
 }
+
+hr {
+    border-top: 1px solid white;
+}
+
+
 
 .btnAvailable:hover {
     background-color: #01D28E;
@@ -65,7 +72,7 @@ button:hover {
     display: flex;
     min-height: 100%;
     width: 95%;
-    border-radius: 2px;
+    border-radius: 10px;
     padding: 20px;
     margin: auto;
     background-color: #4B778D;
@@ -78,6 +85,7 @@ button:hover {
 }
 
 table, th, td {
+    margin: auto;
     /* font-family: 'Inconsolata' */
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: normal;

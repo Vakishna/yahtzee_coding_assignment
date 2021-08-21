@@ -518,9 +518,15 @@ $("#roll").addClass("btnAvailable");
 $("#roll").click(function() {
     if (roll.rollNumGet < 3) {
 
+        var rollLeft = 2 - roll.rollNumGet;
+
         if (roll.rollNumGet == 2) {
             $("#roll").removeClass("btnAvailable");
+            $("#prompt").text("You have no more rolls, you must select an option");
+        } else {
+            $("#prompt").text("You have " + rollLeft + " rolls left.");
         }
+        
 
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
         var rolledScores = scores.CalculateScores(roll);
@@ -540,6 +546,7 @@ $("#roll").click(function() {
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
                 $("#roll").addClass("btnAvailable");
+                $("#prompt").text("Please roll the dices to continue");
                 $("#btnOnes").addClass("selectedBtn");              
                 $("#btnOnes").attr("disabled", "true");
             }
@@ -558,6 +565,7 @@ $("#roll").click(function() {
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
                 $("#roll").addClass("btnAvailable");
+                $("#prompt").text("Please roll the dices to continue");
                 $("#btnTwos").addClass("selectedBtn");
                 $("#btnTwos").attr("src", "images/" + this.d1 + ".png");
             }
@@ -576,10 +584,31 @@ $("#roll").click(function() {
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
                 $("#roll").addClass("btnAvailable");
+                $("#prompt").text("Please roll the dices to continue");
                 $("#btnThrees").addClass("selectedBtn");
                 $("#btnThrees").attr("src", "images/" + this.d1 + ".png");
             }
         });
+
+        $("#btnThrees").click(function () {
+            if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+                var threes = scores.CalculateScores(roll);
+                scores.SetThrees(threes[2]);
+                scores.SetThreeSet(true);
+
+                roll = new DiceSet();
+                roll.setQ();
+                scores.SetZeros();
+                selectedDie = [true, true, true, true, true];
+                $("#roll").addClass("btnAvailable");
+                $("#prompt").text("Please roll the dices to continue");
+                $("#btnThrees").addClass("selectedBtn");
+                $("#btnThrees").attr("src", "images/" + this.d1 + ".png");
+            }
+        });
+
+
 
         roll.setFaces(selectedDie);
 
