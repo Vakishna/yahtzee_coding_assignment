@@ -122,12 +122,12 @@ table, th, td {
         border: 1px solid white;
     }
 
-    #scoreCard table {
-        width: 100%;
-        margin: auto;
-        border-collapse: collapse;
+#scoreCard table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
        
-    }
+}
 
 img {
     margin: 5px;

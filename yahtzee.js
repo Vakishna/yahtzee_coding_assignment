@@ -610,6 +610,10 @@ $("#roll").click(function() {
 
 
 
+
+
+
+
         roll.setFaces(selectedDie);
 
 
