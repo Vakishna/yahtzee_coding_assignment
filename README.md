@@ -1,1 +1,1 @@
-﻿![Alt text](images\interface.png?raw=true "Gameplay")
+﻿![Alt text](images/interface.png?raw=true "Gameplay")
