@@ -551,7 +551,8 @@ $("#roll").click(function() {
                 roll.setQ();
                 scores.SetZeros();
                 selectedDie = [true, true, true, true, true];
-                $("#btnTwos").attr("disabled", "true");
+                $("#btnTwos").addClass("selectedBtn");
+                $("#btnTwos").attr("src", "images/" + this.d1 + ".png");
             }
         });
 

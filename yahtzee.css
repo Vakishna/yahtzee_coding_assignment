@@ -2,10 +2,40 @@ html, body {
     height: 80%;
 }
 body {
-    background-color: green;
+    background-color: #4B778D;
     margin: auto;
-
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: normal;
 }
+
+
+button {
+    background-color: #4B778D;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    padding: 4px 8px;
+    transition-duration: 0.4s;
+    border: 2px solid #f44336;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.selectedBtn {
+    background-color: #01D28E;
+    border: 2px solid #01D28E;
+}
+
+button:hover {
+    box-shadow: 0 12px 40px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #f44336;
+    color: white;
+}
+
 
 #gameboard {
     display: flex;
@@ -19,7 +49,8 @@ body {
 }
 
 table, th, td {
-    font-family: 'Inconsolata';
+    /* font-family: 'Inconsolata' */
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: normal;
 }
 
@@ -29,6 +60,7 @@ table, th, td {
    justify-content: center;
    flex-wrap: wrap;
 }
+
 
 #scoreCard {
     flex: 30%;
@@ -44,7 +76,8 @@ table, th, td {
 }
   
 #scoreCard table {
-    width: 100%;
+    width: 90%;
+    margin: auto;
     border-collapse: collapse;
 }
 
