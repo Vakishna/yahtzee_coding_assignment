@@ -750,7 +750,7 @@ $("#btnThreeOfAKind").click(function () {
 
         var threeOfAKind = scores.CalculateScores(roll);
         scores.SetThreeOfAKind(threeOfAKind[6]);
-        scores.SetFivesSet(true);
+        scores.SetThreeOfAKindSet(true);
 
         roll = new DiceSet();
         roll.setQ();
@@ -764,12 +764,12 @@ $("#btnThreeOfAKind").click(function () {
 });
 
 
-$("#btnThreeOfAKind").click(function () {
+$("#btnFourOfAKind").click(function () {
     if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
 
-        var fives = scores.CalculateScores(roll);
-        scores.SetTh(fives[7]);
-        scores.SetFivesSet(true);
+        var fourOfAKind = scores.CalculateScores(roll);
+        scores.SetFourOfAKind(fourOfAKind[8]);
+        scores.SetFoursSet(true);
             
         roll = new DiceSet();
         roll.setQ();
@@ -777,7 +777,28 @@ $("#btnThreeOfAKind").click(function () {
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
-        $("#btnSixes").addClass("selectedBtn");
-        $("#btnSixes").attr("disabled", "true");
+        $("#btnFourOfAKind").addClass("selectedBtn");
+        $("#btnFourOfAKind").attr("disabled", "true");
     }
 });
+
+
+$("#btnFullHouse").click(function () {
+    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+
+        var fourOfAKind = scores.CalculateScores(roll);
+        scores.SetFourOfAKind(fourOfAKind[8]);
+        scores.SetFoursSet(true);
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnFullHouse").addClass("selectedBtn");
+        $("#btnFullHouse").attr("disabled", "true");
+    }
+});
+
+
