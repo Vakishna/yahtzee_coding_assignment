@@ -38,6 +38,27 @@ class DiceSet {
         $("#d4").attr("src", "images/q.png");
         $("#d5").attr("src", "images/q.png");
     }
+
+    setFaces(selectedDie) {
+        if (selectedDie[0] == true) {
+            $("#d1").attr("src", "images/" + this.d1 + ".png");
+        }
+        if (selectedDie[1] == true) {
+            $("#d2").attr("src", "images/" + this.d2 + ".png");
+        }
+        if (selectedDie[2] == true) {
+            $("#d3").attr("src", "images/" + this.d3 + ".png");
+        }
+        if (selectedDie[3] == true) {
+            $("#d4").attr("src", "images/" + this.d4 + ".png");
+        }
+        if (selectedDie[4] == true) {
+            $("#d5").attr("src", "images/" + this.d5 + ".png");
+        }
+    }
+
+
+
 }
 
 class Yahtzee {
@@ -141,7 +162,6 @@ class Yahtzee {
         this.fives = fives;
     }
 
-
     // Sixes
     get sixBool() {
         return this.sixSet;
@@ -150,18 +170,20 @@ class Yahtzee {
         return this.six;
     }
     SetSixSet(sixSet) {
-        this.fivesSet = fivesSet;
+        this.sixSet = sixSet;
     }
     SetSixes(six) {
         this.six = six;
     }
 
-
-
     // Three of a kind
     get threeOfAKindBool() {
         return this.threeOfAKind;
     }
+
+
+
+
 
 
     // Four of a kind
@@ -399,8 +421,6 @@ class Yahtzee {
 
 
     CalculateScores(diceSet) {
-
-
         const oneScore = this.CalculateUpperPoints(diceSet, 1);      
         const twoScore = this.CalculateUpperPoints(diceSet, 2);
         const threeScore = this.CalculateUpperPoints(diceSet, 3);
@@ -431,7 +451,6 @@ $("#roll").click(function() {
     if (roll.rollNumGet < 3) {
         
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
-
         var rolledScores = scores.CalculateScores(roll);
 
         if (scores.oneBool == false) {
@@ -482,8 +501,7 @@ $("#roll").click(function() {
 
         $("#ones").click(function () {
             if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
-                scores.SetOnes(rolledScores[0]);
-                
+                scores.SetOnes(rolledScores[0]);              
                 scores.SetOneSet(true);
                 roll = new DiceSet();
                 console.log(roll.rollNumGet);
@@ -493,26 +511,7 @@ $("#roll").click(function() {
             }
         });
 
-
-        if (selectedDie[0] == true) {
-            $("#d1").attr("src", "images/" + roll.d1 + ".png");
-        }
-        if (selectedDie[1] == true) {
-            $("#d2").attr("src", "images/" + roll.d2 + ".png");
-        }
-        if (selectedDie[2] == true) {
-            $("#d3").attr("src", "images/" + roll.d3 + ".png");
-        }
-        if (selectedDie[3] == true) {
-            $("#d4").attr("src", "images/" + roll.d4 + ".png");
-        }
-        if (selectedDie[4] == true) {
-            $("#d5").attr("src", "images/" + roll.d5 + ".png");
-        }
-
-        
-
-
+        roll.setFaces(selectedDie);     
 
     } else {
         alert("You have reached the maximum roles for this round.");
