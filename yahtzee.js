@@ -38,8 +38,6 @@ class DiceSet {
         $("#d4").attr("src", "images/q.png");
         $("#d5").attr("src", "images/q.png");
     }
-
-
 }
 
 class Yahtzee {
@@ -73,7 +71,6 @@ class Yahtzee {
         this.yahtzeeSet = false;
     }
 
-
     // Ones
     get oneBool() {
         return this.oneSet;
@@ -88,7 +85,6 @@ class Yahtzee {
         this.ones = ones;
     }
 
-    
     // Twos
     get twoBool() {
         return this.twoSet;
@@ -102,7 +98,6 @@ class Yahtzee {
     SetTwos(twos) {
         this.twos = twos;
     }
-
 
     // Threes
     get threeBool() {
@@ -118,7 +113,6 @@ class Yahtzee {
         this.threes = threes;
     }
 
-
     // Fours
     get fourBool() {
         return this.fourSet;
@@ -126,25 +120,40 @@ class Yahtzee {
     get GetFours() {
         return this.fours;
     }
-    SetTwoSet(threeSet) {
-        this.threesSet = threeSet;
+    SetFoursSet(fourSet) {
+        this.fourSet = fourSet;
     }
-    SetThrees(threes) {
-        this.threes = threes;
+    SetFours(fours) {
+        this.fours = fours;
     }
-
-
 
     // Fives
     get fiveBool() {
         return this.fiveSet;
     }
-
+    get GetFives() {
+        return this.fives;
+    }
+    SetFivesSet(fivesSet) {
+        this.fivesSet = fivesSet;
+    }
+    SetFives(fives) {
+        this.fives = fives;
+    }
 
 
     // Sixes
     get sixBool() {
         return this.sixSet;
+    }
+    get GetSixes() {
+        return this.six;
+    }
+    SetSixSet(sixSet) {
+        this.fivesSet = fivesSet;
+    }
+    SetSixes(six) {
+        this.six = six;
     }
 
 
@@ -410,12 +419,6 @@ class Yahtzee {
                          smallStraight, largeStraight];
         return scoreArr;
     }
-
-
-
-
-
-
 }
 
 let scores = new Yahtzee();
