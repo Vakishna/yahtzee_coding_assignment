@@ -527,7 +527,7 @@ class Yahtzee {
         if (this.fourBool == false) {
             $('#fourPointsDisplay').text(0);
         }
-        if (this.fiveSet == false) {
+        if (this.fiveBool == false) {
             $('#fivePointsDisplay').text(0);
         }
         if (this.sixBool == false) {
@@ -694,7 +694,7 @@ $("#btnOnes").click(function () {
         scores.SetZeros();
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
-        $("#prompt").text("Please roll the dices to continue");
+        $("#prompt").text("Please roll the dices to continue");      
         $("#btnOnes").addClass("selectedBtn");
         $("#btnOnes").attr("disabled", "true");
     }
@@ -805,8 +805,8 @@ $("#btnThreeOfAKind").click(function () {
         scores.SetThreeOfAKindSet(true);
 
         roll = new DiceSet();
-        roll.setQ();
         scores.SetZeros();
+        roll.setQ();        
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");

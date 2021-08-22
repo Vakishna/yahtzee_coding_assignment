@@ -4,8 +4,7 @@ html, body {
 body {
     /*background-color: #4B778D;*/
     background-color: #032B43;
-    font-family: 'IBM Plex Sans', sans;
-    font-weight: normal;
+    
 }
 
 
@@ -99,7 +98,7 @@ button:hover {
 table, th, td {
     margin: auto;
     /* font-family: 'Inconsolata' */
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Coda', cursive;
     font-weight: normal;
 }
 
