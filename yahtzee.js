@@ -646,9 +646,59 @@ $("#roll").click(function () {
     }
 });
 
+$("#reset").click(function () {
+    // Dice Reset
+    roll = new DiceSet();
+    roll.setQ();
+    scores.SetZeros();
+    selectedDie = [true, true, true, true, true];
+    $("#roll").addClass("btnAvailable");
+
+    // Reinstantiate 
+    scores = new Yahtzee();
+
+    // Clear Points
+    $('#onePointsDisplay').text("");
+    $('#twoPointsDisplay').text("");
+    $('#threePointsDisplay').text("");
+    $('#fourPointsDisplay').text("");
+    $('#fivePointsDisplay').text("");
+    $('#sixPointsDisplay').text("");
+    $('#threeOfAKindDisplay').text("");        
+    $('#fourOfAKindDisplay').text("");
+    $("#fullHouseDisplay").text("");
+    $("#smallStraightDisplay").text("");
+    $("#largeStraightDisplay").text("");
+
+    // Reset Buttons
+    $("#btnOnes").removeClass("selectedBtn");
+    $("#btnOnes").removeAttr("disabled");
+    $("#btnTwos").removeClass("selectedBtn");
+    $("#btnTwos").removeAttr("disabled");
+    $("#btnThrees").removeClass("selectedBtn");
+    $("#btnThrees").removeAttr("disabled");
+    $("#btnFours").removeClass("selectedBtn");
+    $("#btnFours").removeAttr("disabled");
+    $("#btnFives").removeClass("selectedBtn");
+    $("#btnFives").removeAttr("disabled");
+    $("#btnSixes").removeClass("selectedBtn");
+    $("#btnSixes").removeAttr("disabled");
+    $("#btnThreeOfAKind").removeClass("selectedBtn");
+    $("#btnThreeOfAKind").removeAttr("disabled");
+    $("#btnFourOfAKind").removeClass("selectedBtn");
+    $("#btnFourOfAKind").removeAttr("disabled");
+    $("#btnFullHouse").removeClass("selectedBtn");
+    $("#btnFullHouse").removeAttr("disabled");
+    $("#btnSmallStraight").removeClass("selectedBtn");
+    $("#btnSmallStraight").removeAttr("disabled");
+    $("#btnLargeStraight").removeClass("selectedBtn");
+    $("#btnLargeStraight").removeAttr("disabled");
+
+
+    $("#prompt").text("Please roll the dices to continue");
+});
 
 // Dice One
-
 $("#d1").click(function () {
     if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[0] == true) {
