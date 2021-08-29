@@ -239,6 +239,35 @@ function Yahtzee() {
     this.SetLargeStraight = function (largeStraightVal) {
         largeStraight = largeStraightVal;
     }
+
+    // Chance
+    this.chanceBool = function () {
+        return chanceSet;
+    }
+    this.GetChance = function () {
+        return chance;
+    }
+    this.SetChanceBool = function (chanceSetVal) {
+        chanceSet = chanceSetVal;
+    }
+    this.SetChance = function (chanceVal) {
+        chance = chanceVal;
+    }
+
+    // Yahtzee
+    this.yahtzeeBool = function () {
+        return yahtzeeSet;
+    }
+    this.GetYahtzee = function () {
+        return yahtzee;
+    }
+    this.SetYahtzeeBool = function (yahtzeeBool) {
+        yahtzeeSet = yahtzeeBool;
+    }
+    this.SetYahtzee = function (yahtzeeVal) {
+        yahtzee = yahtzeeVal;
+    }
+
 }
 
 
