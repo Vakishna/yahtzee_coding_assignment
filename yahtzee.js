@@ -1,596 +1,611 @@
-class DiceSet {    
-    constructor() {
-        this.rollNum = 0;
-        this.d1 = 0;
-        this.d2 = 0;
-        this.d3 = 0;
-        this.d4 = 0;
-        this.d5 = 0;
+function DiceSet() {   
+    var rollNum = 0;
+    var d1 = 0;
+    var d2 = 0;
+    var d3 = 0;
+    var d4 = 0;
+    var d5 = 0;
+
+    this.appendRoll = function () {
+        rollNum++;
+    }
+    
+    this.rollNumGet = function () {
+        return rollNum;
     }
 
-    get rollNumGet() {
-        return this.rollNum;
+    this.getd1 = function () {
+        return d1;
     }
 
-    rollDie(d1set, d2set, d3set, d4set, d5set) {
-        this.rollNum+=1;
-        if (d1set == true) {
-            this.d1 = Math.floor(Math.random() * 6)+1;
-        } 
-        if (d2set == true) {
-            this.d2 = Math.floor(Math.random() * 6)+1;
-        }
-        if (d3set == true) {
-            this.d3 = Math.floor(Math.random() * 6)+1;
-        }
-        if (d4set == true) {
-            this.d4 = Math.floor(Math.random() * 6)+1;
-        }
-        if (d5set == true) {
-            this.d5 = Math.floor(Math.random() * 6)+1;
-        }
+    this.getd2 = function () {
+        return d2;
     }
 
-    setQ() {
-        $("#d1").attr("src", "images/q.png");
-        $("#d2").attr("src", "images/q.png");
-        $("#d3").attr("src", "images/q.png");
-        $("#d4").attr("src", "images/q.png");
-        $("#d5").attr("src", "images/q.png");
+    this.getd3 = function () {
+        return d3;
     }
 
-    setFaces(selectedDie) {
-        if (selectedDie[0] == true) {
-            $("#d1").attr("src", "images/" + this.d1 + ".png");
-        }
-        if (selectedDie[1] == true) {
-            $("#d2").attr("src", "images/" + this.d2 + ".png");
-        }
-        if (selectedDie[2] == true) {
-            $("#d3").attr("src", "images/" + this.d3 + ".png");
-        }
-        if (selectedDie[3] == true) {
-            $("#d4").attr("src", "images/" + this.d4 + ".png");
-        }
-        if (selectedDie[4] == true) {
-            $("#d5").attr("src", "images/" + this.d5 + ".png");
-        }
+    this.getd4 = function () {
+        return d4;
+    }
+
+    this.getd5 = function () {
+        return d5;
+    }
+
+    this.setd1 = function (d1Set) {
+        d1 = d1Set;
+    }
+
+    this.setd2 = function (d2Set) {
+        d2 = d2Set;
+    }
+
+    this.setd3 = function (d3Set) {
+        d3 = d3Set;
+    }
+
+    this.setd4 = function (d4Set) {
+        d4 = d4Set;
+    }
+
+    this.setd5 = function (d5Set) {
+        d5 = d5Set;
     }
 }
 
-class Yahtzee {
-   
-    #ones;
-    #twos;
-    #threes;
-    #fours;
-    #fives;
-    #six;
-    #threeOfAKind;
-    #fourOfAKind;
-    #fullHouse;
-    #smallStraight;
-    #largeStraight;
-    #chance;
-    #yahtzee;
-    #oneSet;
-    #twoSet;
-    #threesSet;
-    #fourSet;
-    #fiveSet;
-    #sixSet;   
-    #fourOfAKindSet;
-    #fullHouseSet;
-    #smallStraightSet;
-    #largeStraightSet;
-    #chanceSet;
-    #yahtzeeSet;
-    #threeOfAKindSets;
+function Yahtzee() {
 
-    constructor() {
-        this.round = 0;
-        this.#ones = 0;
-        this.#twos = 0;
-        this.#threes = 0;
-        this.#fours = 0;
-        this.#fives = 0;
-        this.#six = 0;
-        this.#threeOfAKind = 0;
-        this.#fourOfAKind = 0;
-        this.#fullHouse = 0;
-        this.#smallStraight = 0;
-        this.#largeStraight = 0;
-        this.#chance = 0;
-        this.#yahtzee = 0;
-        this.#oneSet = false;
-        this.#twoSet = false;
-        this.#threesSet = false;
-        this.#fourSet = false;
-        this.#fiveSet = false;
-        this.#sixSet = false;
-        this.#threeOfAKindSets = false;
-        this.#fourOfAKindSet = false;
-        this.#fullHouseSet = false;
-        this.#smallStraightSet = false;
-        this.#largeStraightSet = false;
-        this.#chanceSet = false;
-        this.#yahtzeeSet = false;
-    }
+    var round = 0;
+    var ones = 0;
+    var twos = 0;
+    var threes = 0;
+    var fours = 0;
+    var fives = 0;
+    var six = 0;
+    var threeOfAKind = 0;
+    var fourOfAKind = 0;
+    var fullHouse = 0;
+    var smallStraight = 0;
+    var largeStraight = 0;
+    var chance = 0;
+    var yahtzee = 0;
+    var oneSet = false;
+    var twoSet = false;
+    var threesSet = false;
+    var fourSet = false;
+    var fiveSet = false;
+    var sixSet = false;
+    var threeOfAKindSets = false;
+    var fourOfAKindSet = false;
+    var fullHouseSet = false;
+    var smallStraightSet = false;
+    var largeStraightSet = false;
+    var chanceSet = false;
+    var yahtzeeSet = false;
+  
 
     // Ones
-    get oneBool() {
-        return this.#oneSet;
+    this.oneBool = function() {
+        return oneSet;
     }
-    get GetOnes() {
-        return this.#ones;
+    this.GetOnes = function() {
+        return ones;
     }
-    SetOneSet(oneSet) {
-        this.#oneSet = oneSet;
+    this.SetOneSet = function (oneSets) {
+        oneSet = oneSets;
     }
-    SetOnes(ones) {
-        this.#ones = ones;
+    this.SetOnes = function (oness) {
+        ones = oness;
     }
 
     // Twos
-    get twoBool() {
-        return this.#twoSet;
+    this.twoBool = function () {
+        return twoSet;
     }
-    get GetTwos() {
-        return this.#twos;
+    this.GetTwos = function () {
+        return twos;
     }
-    SetTwosSet(twoSet) {
-        this.#twoSet = twoSet;
+    this.SetTwosSet = function(twoSets) {
+        twoSet = twoSets;
     }
-    SetTwos(twos) {
-        this.#twos = twos;
+    this.SetTwos = function (twoz) {
+        twos = twoz;
     }
 
     // Threes
-    get threeBool() {
-        return this.#threesSet;
+    this.threeBool = function () {
+        return threesSet;
     }
-    get GetThrees() {
-        return this.#threes;
+    this.GetThrees = function () {
+        return threes;
     }
-    SetThreeSet(threeSet) {
-        this.#threesSet = threeSet;
+    this.SetThreeSet = function(threeSets) {
+        threesSet = threeSets;
     }
-    SetThrees(threes) {
-        this.#threes = threes;
+    this.SetThrees = function(threez) {
+        threes = threez;
     }
 
     // Fours
-    get fourBool() {
-        return this.#fourSet;
+    this.fourBool = function() {
+        return fourSet;
     }
-    get GetFours() {
-        return this.#fours;
+    this.GetFours = function() {
+        return fours;
     }
-    SetFoursSet(fourSet) {
-        this.#fourSet = fourSet;
+    this.SetFoursSet = function (fourSets) {
+        fourSet = fourSets;
     }
-    SetFours(fours) {
-        this.#fours = fours;
+    this.SetFours = function (fourss) {
+        fours = fourss;
     }
-
+        
     // Fives
-    get fiveBool() {
-        return this.#fiveSet;
+    this.fiveBool = function() {
+        return fiveSet;
     }
-    get GetFives() {
-        return this.#fives;
+    this.GetFives = function() {
+        return fives;
     }
-    SetFivesSet(fivesSet) {
-        this.#fiveSet = fivesSet;
+    this.SetFivesSet = function (fivesSets) {
+        fiveSet = fivesSets;
     }
-    SetFives(fives) {
-        this.#fives = fives;
+    this.SetFives = function (fiverr) {
+        fives = fiverr;
     }
 
     // Sixes
-    get sixBool() {
-        return this.#sixSet;
+    this.sixBool = function () {
+        return sixSet;
     }
-    get GetSixes() {
-        return this.#six;
+    this.GetSixes = function () {
+        return six;
     }
-    SetSixSet(sixSet) {
-        this.#sixSet = sixSet;
+    this.SetSixSet = function (sixSets) {
+        sixSet = sixSets;
     }
-    SetSixes(six) {
-        this.#six = six;
+    this.SetSixes = function (sixs) {
+        six = sixs;
     }
 
     // Three of a kind
-    get threeOfAKindBool() {
-        return this.#threeOfAKindSets;
+    this.threeOfAKindBool = function () {
+        return threeOfAKindSets;
     }
-    get GetThreeOfAKind() {
-        return this.#threeOfAKind;
+    this.GetThreeOfAKind = function () {
+        return threeOfAKind;
     }
-    SetThreeOfAKindSet(threeOfAKindSets) {
-        this.#threeOfAKindSets = threeOfAKindSets;
+    this.SetThreeOfAKindSet = function (threeOfAKindSetss) {
+        threeOfAKindSets = threeOfAKindSetss;
     }
-    SetThreeOfAKind(threeOfAKind) {
-        this.#threeOfAKind = threeOfAKind;
+    this.SetThreeOfAKind = function (threeOfAKindVal) {
+        threeOfAKind = threeOfAKindVal;
     }
 
     // Four of a kind
-    get fourOfAKindBool() {
-        return this.#fourOfAKindSet;
+    this.fourOfAKindBool = function () {
+        return fourOfAKindSet;
     }
-    get GetFourOfAKind() {
-        return this.#fourOfAKind;
+    this.GetFourOfAKind = function () {
+        return fourOfAKind;
     }
-    SetFourOfAKindSet(fourOfAKindSet) {
-        this.#fourOfAKindSet = fourOfAKindSet;
+    this.SetFourOfAKindSet = function (fourOfAKindSets) {
+        fourOfAKindSet = fourOfAKindSets;
     }
-    SetFourOfAKind(fourOfAKind) {
-        this.#fourOfAKind = fourOfAKind;
+    this.SetFourOfAKind = function (fourOfAKinds) {
+        fourOfAKind = fourOfAKinds;
     }
 
     // Full House
-    get fullHouseBool() {
-        return this.#fullHouseSet;
+    this.fullHouseBool = function () {
+        return fullHouseSet;
     }
-    get GetFullHouse() {
-        return this.#fullHouse;
+    this.GetFullHouse = function () {
+        return fullHouse;
     }
-    SetFullHouseSet(fullHouseSet) {
-        this.#fullHouseSet = fullHouseSet;
+    this.SetFullHouseSet = function (fullHouseSets) {
+        fullHouseSet = fullHouseSets;
     }
-    SetFullHouse(fullHouse) {
-        this.#fullHouse = fullHouse;
+    this.SetFullHouse = function (fullHouses) {
+        fullHouse = fullHouses;
     }
 
     // Small Straight
-    get smallStraightBool() {
-        return this.#smallStraightSet;
+    this.smallStraightBool = function () {
+        return smallStraightSet;
     }
-    get GetSmallStraight() {
-        return this.#smallStraight;
+    this.GetSmallStraight = function () {
+        return smallStraight;
     }
-    SetSmallStraightSet(smallStraightSet) {
-        this.#smallStraightSet = smallStraightSet;
+    this.SetSmallStraightSet = function (smallStraightSets) {
+        smallStraightSet = smallStraightSets;
     }
-    SetSmallStraight(smallStraight) {
-        this.#smallStraight = smallStraight;
+    this.SetSmallStraight = function (smallStraights) {
+        smallStraight = smallStraights;
     }
 
     // Large Straight
-    get largeStraightBool() {
-        return this.#largeStraightSet;
+    this.largeStraightBool = function () {
+        return largeStraightSet;
     }
-    get GetLargeStraight() {
-        return this.#largeStraight;
+    this.GetLargeStraight = function () {
+        return largeStraight;
     }
-    SetLargeStraightSet(largeStraightSet) {
-        this.#largeStraightSet = largeStraightSet;
+    this.SetLargeStraightSet = function (largeStraightSets) {
+        largeStraightSet = largeStraightSets;
     }
-    SetLargeStraight(largeStraight) {
-        this.#largeStraight = largeStraight;
+    this.SetLargeStraight = function (largeStraightVal) {
+        largeStraight = largeStraightVal;
     }
+}
 
 
+Yahtzee.prototype.CalculateUpperPoints = function (diceSet, rollNum) {
+    var diceArr = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var score = 0;
 
-
-    CalculateUpperPoints(diceSet, rollNum) {
-        var diceArr = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var score = 0;
-
-        for (var i = 0; i < 5; i++) {
-            if (diceArr[i] == rollNum) {
-                score += rollNum;
-            }
+    for (var i = 0; i < 5; i++) {
+        if (diceArr[i] == rollNum) {
+            score += rollNum;
         }
-
-        return score;
     }
 
-    CalculateThreeOfKind(diceSet) {
-        var diceArr = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var score = 0;
-        var threeOfAKind = false;
-        var counter = 0;
+    return score;
+}
 
-        for (var i = 1; i <= 6; i++) {
-            counter = 0;
-            for (var j = 0; j < 5; j++) {
-                if (diceArr[j] == i) {
-                    counter++;
-                }
-                if (counter == 3) {
-                    threeOfAKind = true;
-                    break;
-                }
-            }
-            if (counter >= 3) {
-                threeOfAKind = true;
-                break;
-            }
-        }
-
-        if (threeOfAKind == true) {
-            for (var i = 0; i < 5; i++) {
-                score += diceArr[i];
-            }
-        }
-
-        return score;
+DiceSet.prototype.rollDie = function (d1set, d2set, d3set, d4set, d5set) {
+    this.appendRoll();
+    if (d1set == true) {
+        this.setd1(Math.floor(Math.random() * 6) + 1);
     }
-
-    CalculateFourOfAKind(diceSet) {
-        var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var score = 0;
-        var fourOfAKind = false;
-        var counter = 0;
-
-        for (var i = 1; i <= 6; i++) {
-            counter = 0;
-            for (var j = 0; j < 5; j++) {
-                if (diceArry[j] == i) {
-                    counter++;
-                }
-                if (counter == 4) {
-                    fourOfAKind = true;
-                    break;
-                }
-            }
-            if (counter >= 4) {
-                fourOfAKind = true;
-                break;
-            }
-        }
-
-        if (fourOfAKind == true) {
-            for (var i = 0; i < 5; i++) {
-                score += diceArry[i];
-            }
-        }
-
-        return score;
+    if (d2set == true) {
+        this.setd2(Math.floor(Math.random() * 6) + 1);
     }
+    if (d3set == true) {
+        this.setd3(Math.floor(Math.random() * 6) + 1);
+    }
+    if (d4set == true) {
+        this.setd4(Math.floor(Math.random() * 6) + 1);
+    }
+    if (d5set == true) {
+        this.setd5(Math.floor(Math.random() * 6) + 1);
+    }
+}
 
-    CalculateFullHouse(diceSet) {
-        var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var score = 0;
-        var threeOfAKinds = false;
-        var counter = 0;
-        var threeOfKindValue = 0;
+DiceSet.prototype.setQ = function () {
+    $("#d1").attr("src", "images/q.png");
+    $("#d2").attr("src", "images/q.png");
+    $("#d3").attr("src", "images/q.png");
+    $("#d4").attr("src", "images/q.png");
+    $("#d5").attr("src", "images/q.png");
+}
 
 
-        for (var i = 1; i <= 6; i++) {
-            counter = 0;
-            for (var j = 0; j < 5; j++) {
-                if (diceArry[j] == i) {
-                    counter++;
-                }
-                if (counter == 3) {
-                    threeOfKindValue = diceArry[j];
-                    threeOfAKinds = true;
-                    break;
-                }
+DiceSet.prototype.setFaces = function (selectedDie) {
+    if (selectedDie[0] == true) {
+        $("#d1").attr("src", "images/" + this.getd1() + ".png");
+    }
+    if (selectedDie[1] == true) {
+        $("#d2").attr("src", "images/" + this.getd2() + ".png");
+    }
+    if (selectedDie[2] == true) {
+        $("#d3").attr("src", "images/" + this.getd3() + ".png");
+    }
+    if (selectedDie[3] == true) {
+        $("#d4").attr("src", "images/" + this.getd4() + ".png");
+    }
+    if (selectedDie[4] == true) {
+        $("#d5").attr("src", "images/" + this.getd5() + ".png");
+    }
+}
+
+Yahtzee.prototype.CalculateScores = function (diceSet) {
+    var oneScore = this.CalculateUpperPoints(diceSet, 1);
+    console.log(oneScore);
+    var twoScore = this.CalculateUpperPoints(diceSet, 2);
+    var threeScore = this.CalculateUpperPoints(diceSet, 3);
+    const fourScore = this.CalculateUpperPoints(diceSet, 4);
+    const fiveScore = this.CalculateUpperPoints(diceSet, 5);
+    const sixScore = this.CalculateUpperPoints(diceSet, 6);
+    const threeOfAKind = this.CalculateThreeOfKind(diceSet);
+    const fourOfAKind = this.CalculateFourOfAKind(diceSet);
+    const fullHouse = this.CalculateFullHouse(diceSet);
+    const smallStraight = this.CalculateSmallStraight(diceSet);
+    const largeStraight = this.CalculateLargeStraight(diceSet);
+
+
+    var scoreArr = [oneScore, twoScore, threeScore, fourScore, fiveScore,
+        sixScore, threeOfAKind, fourOfAKind, fullHouse,
+        smallStraight, largeStraight];
+    return scoreArr;
+}
+
+Yahtzee.prototype.SetZeros = function () {
+    if (this.oneBool() == false) {
+        $('#onePointsDisplay').text(0);
+    }
+    if (this.twoBool() == false) {
+        $('#twoPointsDisplay').text(0);
+    }
+    if (this.threeBool() == false) {
+        $('#threePointsDisplay').text(0);
+    }
+    if (this.fourBool() == false) {
+        $('#fourPointsDisplay').text(0);
+    }
+    if (this.fiveBool() == false) {
+        $('#fivePointsDisplay').text(0);
+    }
+    if (this.sixBool() == false) {
+        $('#sixPointsDisplay').text(0);
+    }
+    if (this.threeOfAKindBool() == false) {
+        $('#threeOfAKindDisplay').text(0);
+    }
+    if (this.fourOfAKindBool() == false) {
+        $('#fourOfAKindDisplay').text(0);
+    }
+    if (this.fullHouseBool() == false) {
+        $("#fullHouseDisplay").text(0);
+    }
+    if (this.smallStraightBool() == false) {
+        $("#smallStraightDisplay").text(0);
+    }
+    if (this.largeStraightBool() == false) {
+        $("#largeStraightDisplay").text(0);
+    }
+}
+
+
+Yahtzee.prototype.CalculateFullHouse = function (diceSet) {
+    var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var score = 0;
+    var threeOfAKinds = false;
+    var counter = 0;
+    var threeOfKindValue = 0;
+
+
+    for (var i = 1; i <= 6; i++) {
+        counter = 0;
+        for (var j = 0; j < 5; j++) {
+            if (diceArry[j] == i) {
+                counter++;
             }
-            if (counter >= 4) {
+            if (counter == 3) {
+                threeOfKindValue = diceArry[j];
                 threeOfAKinds = true;
                 break;
             }
         }
-
-        counter = 0;
-        var otherval = 0;
-        if (threeOfAKinds == true) {
-            for (var i = 0; i < 5; i++) {
-                if (diceArry[i] != threeOfKindValue) {
-                    otherval = diceArry[i]
-                }
-            }
-
-            for (var i = 0; i < 5; i++) {
-                if (diceArry[i] == otherval) {
-                    counter++;
-                }
-            }
-
-            if (counter == 2) {
-                return 25;
-            } else {
-                return 0;
-            }
-        }
-        return 0;
-    }
-
-
-    BubbleSort(arr, n) {
-        var i, j;
-        for (i = 0; i < n - 1; i++) {
-            for (j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    var temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-        return arr;
-    }
-
-
-
-    CalculateSmallStraight(diceSet) {
-        var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var sortedDiceSet = this.BubbleSort(diceArry, diceArry.length);
-        var smallStraight = false;
-        var counter = 0;
-
-        var start = sortedDiceSet[0]
-
-        // Check from first value
-        for (var i = 0; i < 5; i++) {
-            if (i == 0) {
-                counter++;
-                continue;
-            }
-            if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
-                counter++
-                continue;
-            }
-            else if (sortedDiceSet[i] == sortedDiceSet[i - 1]) {
-                continue;
-            }
-        }
-
         if (counter >= 4) {
-            return 30;
-        } else {
-            return 0;
+            threeOfAKinds = true;
+            break;
         }
     }
 
-    CalculateLargeStraight(diceSet) {
-        var diceArry = [diceSet.d1, diceSet.d2, diceSet.d3, diceSet.d4, diceSet.d5];
-        var sortedDiceSet = this.BubbleSort(diceArry, diceArry.length);
-        var counter = 0;
-
-        var start = sortedDiceSet[0]
-
-        // Check from first value
+    counter = 0;
+    var otherval = 0;
+    if (threeOfAKinds == true) {
         for (var i = 0; i < 5; i++) {
-            if (i == 0) {
-                counter++;
-                continue;
-            }
-            if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
-                counter++
-                continue;
-            }
-            else if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
-                break;
+            if (diceArry[i] != threeOfKindValue) {
+                otherval = diceArry[i]
             }
         }
 
-        if (counter >= 5) {
-            return 40;
+        for (var i = 0; i < 5; i++) {
+            if (diceArry[i] == otherval) {
+                counter++;
+            }
+        }
+
+        if (counter == 2) {
+            return 25;
         } else {
             return 0;
         }
     }
+    return 0;
+}
 
+Yahtzee.prototype.CalculateLargeStraight = function (diceSet) {
+    var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var sortedDiceSet = this.BubbleSort(diceArry, diceArry.length);
+    var counter = 0;
 
-    SetScores(scoresArr) {
-        if (this.oneBool == false) {
-            $('#onePointsDisplay').text(scoresArr[0]);
+    var start = sortedDiceSet[0]
+
+    // Check from first value
+    for (var i = 0; i < 5; i++) {
+        if (i == 0) {
+            counter++;
+            continue;
         }
-        if (this.twoBool == false) {
-            $('#twoPointsDisplay').text(scoresArr[1]);
+        if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
+            counter++
+            continue;
         }
-        if (this.threeBool == false) {
-            $('#threePointsDisplay').text(scoresArr[2]);
-        }
-        if (this.fourBool == false) {
-            $('#fourPointsDisplay').text(scoresArr[3]);
-        }
-        if (this.fiveBool == false) {
-            $('#fivePointsDisplay').text(scoresArr[4]);
-        }
-        if (this.sixBool == false) {
-            $('#sixPointsDisplay').text(scoresArr[5]);
-        }
-        if (this.threeOfAKindBool == false) {
-            $('#threeOfAKindDisplay').text(scoresArr[6]);
-        }
-        if (this.fourOfAKindBool == false) {
-            $('#fourOfAKindDisplay').text(scoresArr[7]);
-        }
-        if (this.fullHouseBool == false) {
-            $("#fullHouseDisplay").text(scoresArr[8]);
-        }
-        if (this.smallStraightBool == false) {
-            $("#smallStraightDisplay").text(scoresArr[9]);
-        }
-        if (this.largeStraightBool == false) {
-            $("#largeStraightDisplay").text(scoresArr[10]);
+        else if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
+            break;
         }
     }
 
-    SetZeros() {
-        if (this.oneBool == false) {
-            $('#onePointsDisplay').text(0);
-        }
-        if (this.twoBool == false) {
-            $('#twoPointsDisplay').text(0);
-        }
-        if (this.threeBool == false) {
-            $('#threePointsDisplay').text(0);
-        }
-        if (this.fourBool == false) {
-            $('#fourPointsDisplay').text(0);
-        }
-        if (this.fiveBool == false) {
-            $('#fivePointsDisplay').text(0);
-        }
-        if (this.sixBool == false) {
-            $('#sixPointsDisplay').text(0);
-        }
-        if (this.threeOfAKindBool == false) {
-            $('#threeOfAKindDisplay').text(0);
-        }
-        if (this.fourOfAKindBool == false) {
-            $('#fourOfAKindDisplay').text(0);
-        }
-        if (this.fullHouseBool == false) {
-            $("#fullHouseDisplay").text(0);
-        }
-        if (this.smallStraightBool == false) {
-            $("#smallStraightDisplay").text(0);
-        }
-        if (this.largeStraightBool == false) {
-            $("#largeStraightDisplay").text(0);
-        }
-    }
-
-
-
-    CalculateScores(diceSet) {
-        const oneScore = this.CalculateUpperPoints(diceSet, 1);      
-        const twoScore = this.CalculateUpperPoints(diceSet, 2);
-        const threeScore = this.CalculateUpperPoints(diceSet, 3);
-        const fourScore = this.CalculateUpperPoints(diceSet, 4);
-        const fiveScore = this.CalculateUpperPoints(diceSet, 5);
-        const sixScore = this.CalculateUpperPoints(diceSet, 6);
-        const threeOfAKind = this.CalculateThreeOfKind(diceSet);
-        const fourOfAKind = this.CalculateFourOfAKind(diceSet);
-        const fullHouse = this.CalculateFullHouse(diceSet);
-        const smallStraight = this.CalculateSmallStraight(diceSet);
-        const largeStraight = this.CalculateLargeStraight(diceSet);
-
-
-        const scoreArr = [oneScore, twoScore, threeScore, fourScore, fiveScore,
-                         sixScore, threeOfAKind, fourOfAKind, fullHouse,
-                         smallStraight, largeStraight];
-        return scoreArr;
+    if (counter >= 5) {
+        return 40;
+    } else {
+        return 0;
     }
 }
 
+
+Yahtzee.prototype.CalculateFourOfAKind = function (diceSet) {
+    var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var score = 0;
+    var fourOfAKind = false;
+    var counter = 0;
+
+    for (var i = 1; i <= 6; i++) {
+        counter = 0;
+        for (var j = 0; j < 5; j++) {
+            if (diceArry[j] == i) {
+                counter++;
+            }
+            if (counter == 4) {
+                fourOfAKind = true;
+                break;
+            }
+        }
+        if (counter >= 4) {
+            fourOfAKind = true;
+            break;
+        }
+    }
+
+    if (fourOfAKind == true) {
+        for (var i = 0; i < 5; i++) {
+            score += diceArry[i];
+        }
+    }
+
+    return score;
+}
+
+Yahtzee.prototype.SetScores = function (scoresArr) {
+    if (this.oneBool() == false) {
+        $('#onePointsDisplay').text(scoresArr[0]);
+    }
+    if (this.twoBool() == false) {
+        $('#twoPointsDisplay').text(scoresArr[1]);
+    }
+    if (this.threeBool() == false) {
+        $('#threePointsDisplay').text(scoresArr[2]);
+    }
+    if (this.fourBool() == false) {
+        $('#fourPointsDisplay').text(scoresArr[3]);
+    }
+    if (this.fiveBool() == false) {
+        $('#fivePointsDisplay').text(scoresArr[4]);
+    }
+    if (this.sixBool() == false) {
+        $('#sixPointsDisplay').text(scoresArr[5]);
+    }
+    if (this.threeOfAKindBool() == false) {
+        $('#threeOfAKindDisplay').text(scoresArr[6]);
+    }
+    if (this.fourOfAKindBool() == false) {
+        $('#fourOfAKindDisplay').text(scoresArr[7]);
+    }
+    if (this.fullHouseBool() == false) {
+        $("#fullHouseDisplay").text(scoresArr[8]);
+    }
+    if (this.smallStraightBool() == false) {
+        $("#smallStraightDisplay").text(scoresArr[9]);
+    }
+    if (this.largeStraightBool() == false) {
+        $("#largeStraightDisplay").text(scoresArr[10]);
+    }
+}
+
+
+Yahtzee.prototype.CalculateThreeOfKind = function (diceSet) {
+    var diceArr = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var score = 0;
+    var threeOfAKind = false;
+    var counter = 0;
+
+    for (var i = 1; i <= 6; i++) {
+        counter = 0;
+        for (var j = 0; j < 5; j++) {
+            if (diceArr[j] == i) {
+                counter++;
+            }
+            if (counter == 3) {
+                threeOfAKind = true;
+                break;
+            }
+        }
+        if (counter >= 3) {
+            threeOfAKind = true;
+            break;
+        }
+    }
+
+    if (threeOfAKind == true) {
+        for (var i = 0; i < 5; i++) {
+            score += diceArr[i];
+        }
+    }
+
+    return score;
+}
+
+
+Yahtzee.prototype.CalculateSmallStraight = function (diceSet) {
+    var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var sortedDiceSet = this.BubbleSort(diceArry, diceArry.length);
+    var smallStraight = false;
+    var counter = 0;
+
+    var start = sortedDiceSet[0]
+
+    // Check from first value
+    for (var i = 0; i < 5; i++) {
+        if (i == 0) {
+            counter++;
+            continue;
+        }
+        if (sortedDiceSet[i] == sortedDiceSet[i - 1] + 1) {
+            counter++
+            continue;
+        }
+        else if (sortedDiceSet[i] == sortedDiceSet[i - 1]) {
+            continue;
+        }
+    }
+
+    if (counter >= 4) {
+        return 30;
+    } else {
+        return 0;
+    }
+}
+
+
+
+Yahtzee.prototype.BubbleSort = function (arr, n) {
+    var i, j;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
 let scores = new Yahtzee();
-let roll = new DiceSet();
+var roll = new DiceSet();
 let selectedDie = [true, true, true, true, true];
 $("#roll").addClass("btnAvailable");
 
 
-$("#roll").click(function() {
-    if (roll.rollNumGet < 3) {
 
-        var rollLeft = 2 - roll.rollNumGet;
 
-        if (roll.rollNumGet == 2) {
+$("#roll").click(function () {
+    if (roll.rollNumGet() < 3) {
+        var rollLeft = 2 - roll.rollNumGet();
+
+        if (roll.rollNumGet() == 2) {
             $("#roll").removeClass("btnAvailable");
             $("#prompt").text("You have no more rolls.");
         } else {
             $("#prompt").text("You have " + rollLeft + " rolls left.");
         }
-        
+
 
         roll.rollDie(selectedDie[0], selectedDie[1], selectedDie[2], selectedDie[3], selectedDie[4]);
         var rolledScores = scores.CalculateScores(roll);
@@ -605,14 +620,14 @@ $("#roll").click(function() {
 
 // Dice One
 
-$("#d1").click(function() {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+$("#d1").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[0] == true) {
             selectedDie[0] = false;
-            $("#d1").attr("src", "images/" + roll.d1 + "x.png");
+            $("#d1").attr("src", "images/" + roll.getd1() + "x.png");
         }
         else if (selectedDie[0] == false) {
-            $("#d1").attr("src", "images/" + roll.d1 + ".png");
+            $("#d1").attr("src", "images/" + roll.getd1() + ".png");
             selectedDie[0] = true;
         }
     } else {
@@ -620,69 +635,69 @@ $("#d1").click(function() {
     }
 });
 
-$("#d2").click(function() {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+$("#d2").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[1] == true) {
             selectedDie[1] = false;
-            $("#d2").attr("src", "images/" + roll.d2 + "x.png");
+            $("#d2").attr("src", "images/" + roll.getd2() + "x.png");
         }
         else if (selectedDie[1] == false) {
-            $("#d2").attr("src", "images/" + roll.d2 + ".png");
+            $("#d2").attr("src", "images/" + roll.getd2() + ".png");
             selectedDie[1] = true;
         }
     } else {
         alert("Please Roll The Dices");
-    } 
+    }
 });
 
-$("#d3").click(function() {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+$("#d3").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[2] == true) {
             selectedDie[2] = false;
-            $("#d3").attr("src", "images/" + roll.d3 + "x.png");
+            $("#d3").attr("src", "images/" + roll.getd3() + "x.png");
         }
         else if (selectedDie[2] == false) {
-            $("#d3").attr("src", "images/" + roll.d3 + ".png");
+            $("#d3").attr("src", "images/" + roll.getd3() + ".png");
             selectedDie[2] = true;
         }
     } else {
         alert("Please Roll The Dices");
-    } 
+    }
 });
 
-$("#d4").click(function() {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+$("#d4").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[3] == true) {
             selectedDie[3] = false;
-            $("#d4").attr("src", "images/" + roll.d4 + "x.png");
+            $("#d4").attr("src", "images/" + roll.getd4() + "x.png");
         }
         else if (selectedDie[3] == false) {
-            $("#d4").attr("src", "images/" + roll.d4 + ".png");
+            $("#d4").attr("src", "images/" + roll.getd4() + ".png");
             selectedDie[3] = true;
         }
     } else {
         alert("Please Roll The Dices");
-    } 
+    }
 });
 
 
-$("#d5").click(function() {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+$("#d5").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
         if (selectedDie[4] == true) {
             selectedDie[4] = false;
-            $("#d5").attr("src", "images/" + roll.d5 + "x.png");
+            $("#d5").attr("src", "images/" + roll.getd5() + "x.png");
         }
         else if (selectedDie[4] == false) {
-            $("#d5").attr("src", "images/" + roll.d5 + ".png");
+            $("#d5").attr("src", "images/" + roll.getd5() + ".png");
             selectedDie[4] = true;
         }
     } else {
         alert("Please Roll The Dices");
-    } 
+    }
 });
 
 $("#btnOnes").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.oneBool() == false) {
 
         var ones = scores.CalculateScores(roll);
         scores.SetOnes(ones[0]);
@@ -691,17 +706,18 @@ $("#btnOnes").click(function () {
 
         roll = new DiceSet();
         roll.setQ();
-        scores.SetZeros();
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
-        $("#prompt").text("Please roll the dices to continue");      
+        $("#prompt").text("Please roll the dices to continue");
         $("#btnOnes").addClass("selectedBtn");
         $("#btnOnes").attr("disabled", "true");
+        scores.SetZeros();
+
     }
 });
 
 $("#btnTwos").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.twoBool() == false) {
 
         var twos = scores.CalculateScores(roll);
         scores.SetTwos(twos[1]);
@@ -709,18 +725,18 @@ $("#btnTwos").click(function () {
 
 
         roll = new DiceSet();
-        roll.setQ();
-        scores.SetZeros();
+        roll.setQ();      
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
         $("#btnTwos").addClass("selectedBtn");
         $("#btnTwos").attr("disabled", "true");
+        scores.SetZeros();
     }
 });
 
 $("#btnThrees").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.threeBool() == false) {
 
         var threes = scores.CalculateScores(roll);
         scores.SetThrees(threes[2]);
@@ -728,18 +744,18 @@ $("#btnThrees").click(function () {
 
 
         roll = new DiceSet();
-        roll.setQ();
-        scores.SetZeros();
+        roll.setQ();        
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
         $("#btnThrees").addClass("selectedBtn");
         $("#btnThrees").attr("disabled", "true");
+        scores.SetZeros();
     }
 });
 
 $("#btnFours").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.fourBool() == false) {
 
         var fours = scores.CalculateScores(roll);
         scores.SetFours(fours[3]);
@@ -759,7 +775,7 @@ $("#btnFours").click(function () {
 
 
 $("#btnFives").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.fiveBool() == false) {
 
         var fives = scores.CalculateScores(roll);
         scores.SetFives(fives[4]);
@@ -779,7 +795,7 @@ $("#btnFives").click(function () {
 
 
 $("#btnSixes").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.sixBool() == false) {
 
         var sixes = scores.CalculateScores(roll);
         scores.SetSixes(sixes[5]);
@@ -787,18 +803,21 @@ $("#btnSixes").click(function () {
 
         roll = new DiceSet();
         roll.setQ();
-        scores.SetZeros();
+        
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
         $("#btnSixes").addClass("selectedBtn");
         $("#btnSixes").attr("disabled", "true");
+
+        scores.SetZeros();
+
     }
 });
 
 
 $("#btnThreeOfAKind").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.threeOfAKindBool() == false) {
 
         var threeOfAKind = scores.CalculateScores(roll);
         scores.SetThreeOfAKind(threeOfAKind[6]);
@@ -806,7 +825,7 @@ $("#btnThreeOfAKind").click(function () {
 
         roll = new DiceSet();
         scores.SetZeros();
-        roll.setQ();        
+        roll.setQ();
         selectedDie = [true, true, true, true, true];
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
@@ -817,12 +836,12 @@ $("#btnThreeOfAKind").click(function () {
 
 
 $("#btnFourOfAKind").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.fourOfAKindBool() == false) {
 
         var fourOfAKind = scores.CalculateScores(roll);
         scores.SetFourOfAKind(fourOfAKind[7]);
         scores.SetFourOfAKindSet(true);
-            
+
         roll = new DiceSet();
         roll.setQ();
         scores.SetZeros();
@@ -836,7 +855,7 @@ $("#btnFourOfAKind").click(function () {
 
 
 $("#btnFullHouse").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.fullHouseBool() == false) {
 
         var fullHouse = scores.CalculateScores(roll);
         scores.SetFullHouse(fullHouse[8]);
@@ -855,7 +874,7 @@ $("#btnFullHouse").click(function () {
 
 
 $("#btnSmallStraight").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
 
         var smallStraight = scores.CalculateScores(roll);
         scores.SetSmallStraight(smallStraight[9]);
@@ -873,7 +892,7 @@ $("#btnSmallStraight").click(function () {
 });
 
 $("#btnLargeStraight").click(function () {
-    if (roll.rollNumGet != 0 && roll.rollNumGet < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && largeStraightBool() == false) {
 
         var largeStraight = scores.CalculateScores(roll);
         scores.SetLargeStraight(largeStraight[10]);
