@@ -903,7 +903,7 @@ $("#btnFullHouse").click(function () {
 
 
 $("#btnSmallStraight").click(function () {
-    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.smallStraightBool() == false) {
 
         var smallStraight = scores.CalculateScores(roll);
         scores.SetSmallStraight(smallStraight[9]);
