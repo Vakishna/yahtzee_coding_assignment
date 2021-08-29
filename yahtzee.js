@@ -892,7 +892,7 @@ $("#btnSmallStraight").click(function () {
 });
 
 $("#btnLargeStraight").click(function () {
-    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && largeStraightBool() == false) {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.largeStraightBool() == false) {
 
         var largeStraight = scores.CalculateScores(roll);
         scores.SetLargeStraight(largeStraight[10]);
