@@ -687,6 +687,7 @@ $("#reset").click(function () {
     $("#fullHouseDisplay").text("");
     $("#smallStraightDisplay").text("");
     $("#largeStraightDisplay").text("");
+    $("#sumDisplay").text("");
 
     // Reset Buttons
     $("#btnOnes").removeClass("selectedBtn");
