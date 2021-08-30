@@ -343,6 +343,7 @@ Yahtzee.prototype.CalculateScores = function (diceSet) {
     const fullHouse = this.CalculateFullHouse(diceSet);
     const smallStraight = this.CalculateSmallStraight(diceSet);
     const largeStraight = this.CalculateLargeStraight(diceSet);
+    
 
 
     var scoreArr = [oneScore, twoScore, threeScore, fourScore, fiveScore,
@@ -437,6 +438,23 @@ Yahtzee.prototype.CalculateFullHouse = function (diceSet) {
     }
     return 0;
 }
+
+
+Yahtzee.prototype.CalculateUpperSum = function (sumDisplay) {
+    //ones //twos //threes //fours //fives // six
+    var upperArray = [this.GetOnes(), this.GetTwos(), this.GetThrees(), this.GetFours(), this.GetFives(), this.GetSixes()];
+    var sum = 0;
+
+    for (var i = 0; i < upperArray.length; i++) {
+        sum += upperArray[i];
+    }
+
+    return sum;
+
+}
+
+
+
 
 Yahtzee.prototype.CalculateLargeStraight = function (diceSet) {
     var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
@@ -781,6 +799,8 @@ $("#btnOnes").click(function () {
         var ones = scores.CalculateScores(roll);
         scores.SetOnes(ones[0]);
         scores.SetOneSet(true);
+        var sum = scores.CalculateUpperSum();
+
 
 
         roll = new DiceSet();
@@ -791,6 +811,7 @@ $("#btnOnes").click(function () {
         $("#btnOnes").addClass("selectedBtn");
         $("#btnOnes").attr("disabled", "true");
         scores.SetZeros();
+        $("#sumDisplay").text(sum);
 
     }
 });
@@ -801,7 +822,7 @@ $("#btnTwos").click(function () {
         var twos = scores.CalculateScores(roll);
         scores.SetTwos(twos[1]);
         scores.SetTwosSet(true);
-
+        var sum = scores.CalculateUpperSum();
 
         roll = new DiceSet();
         roll.setQ();      
@@ -811,6 +832,7 @@ $("#btnTwos").click(function () {
         $("#btnTwos").addClass("selectedBtn");
         $("#btnTwos").attr("disabled", "true");
         scores.SetZeros();
+        $("#sumDisplay").text(sum);
     }
 });
 
@@ -820,7 +842,7 @@ $("#btnThrees").click(function () {
         var threes = scores.CalculateScores(roll);
         scores.SetThrees(threes[2]);
         scores.SetThreeSet(true);
-
+        var sum = scores.CalculateUpperSum();
 
         roll = new DiceSet();
         roll.setQ();        
@@ -830,6 +852,7 @@ $("#btnThrees").click(function () {
         $("#btnThrees").addClass("selectedBtn");
         $("#btnThrees").attr("disabled", "true");
         scores.SetZeros();
+        $("#sumDisplay").text(sum);
     }
 });
 
@@ -839,6 +862,7 @@ $("#btnFours").click(function () {
         var fours = scores.CalculateScores(roll);
         scores.SetFours(fours[3]);
         scores.SetFoursSet(true);
+        var sum = scores.CalculateUpperSum();
 
         roll = new DiceSet();
         roll.setQ();
@@ -848,6 +872,7 @@ $("#btnFours").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnFours").addClass("selectedBtn");
         $("#btnFours").attr("disabled", "true");
+        $("#sumDisplay").text(sum);
     }
 });
 
@@ -859,6 +884,8 @@ $("#btnFives").click(function () {
         var fives = scores.CalculateScores(roll);
         scores.SetFives(fives[4]);
         scores.SetFivesSet(true);
+        var sum = scores.CalculateUpperSum();
+
 
         roll = new DiceSet();
         roll.setQ();
@@ -868,6 +895,8 @@ $("#btnFives").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnFives").addClass("selectedBtn");
         $("#btnFives").attr("disabled", "true");
+        $("#sumDisplay").text(sum);
+
     }
 });
 
@@ -879,6 +908,7 @@ $("#btnSixes").click(function () {
         var sixes = scores.CalculateScores(roll);
         scores.SetSixes(sixes[5]);
         scores.SetSixSet(true);
+        var sum = scores.CalculateUpperSum();
 
         roll = new DiceSet();
         roll.setQ();
@@ -888,9 +918,8 @@ $("#btnSixes").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnSixes").addClass("selectedBtn");
         $("#btnSixes").attr("disabled", "true");
-
-        scores.SetZeros();
-
+        $("#sumDisplay").text(sum);
+        scores.SetZeros();       
     }
 });
 
