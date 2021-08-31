@@ -267,7 +267,6 @@ function Yahtzee() {
     this.SetYahtzee = function (yahtzeeVal) {
         yahtzee = yahtzeeVal;
     }
-
 }
 
 
@@ -330,6 +329,36 @@ DiceSet.prototype.setFaces = function (selectedDie) {
     }
 }
 
+Yahtzee.prototype.CalculateChance = function (diceSet) {
+    var diceArr = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var total = 0;
+
+    for (var i = 0; i < diceArr.length; i++) {
+        total += diceArr[i];
+    }
+    return total;
+}
+
+Yahtzee.prototype.YahtzeeScore = function (diceSet) {
+    var diceArr = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
+    var counter = 0;
+
+    for (var i = 0; i < diceArr.length; i++) {
+        if (diceArr[0] == diceArr[i]) {
+            counter++;
+        }
+    }
+
+    if (counter == 5) {
+        return 50;
+    } else {
+        return 0;
+    }
+}
+
+
+
+
 Yahtzee.prototype.CalculateScores = function (diceSet) {
     var oneScore = this.CalculateUpperPoints(diceSet, 1);
     console.log(oneScore);
@@ -343,12 +372,14 @@ Yahtzee.prototype.CalculateScores = function (diceSet) {
     const fullHouse = this.CalculateFullHouse(diceSet);
     const smallStraight = this.CalculateSmallStraight(diceSet);
     const largeStraight = this.CalculateLargeStraight(diceSet);
-    
+    const chanceScore = this.CalculateChance(diceSet);
+    const yahtzeeScore = this.YahtzeeScore(diceSet);
+
 
 
     var scoreArr = [oneScore, twoScore, threeScore, fourScore, fiveScore,
         sixScore, threeOfAKind, fourOfAKind, fullHouse,
-        smallStraight, largeStraight];
+        smallStraight, largeStraight, chanceScore, yahtzeeScore];
     return scoreArr;
 }
 
@@ -385,6 +416,12 @@ Yahtzee.prototype.SetZeros = function () {
     }
     if (this.largeStraightBool() == false) {
         $("#largeStraightDisplay").text(0);
+    }
+    if (this.chanceBool() == false) {
+        $("#chanceDisplay").text(0);
+    }
+    if(this.yahtzeeBool() == false) {
+        $("#yahtzeeDisplay").text(0);
     }
 }
 
@@ -423,13 +460,11 @@ Yahtzee.prototype.CalculateFullHouse = function (diceSet) {
                 otherval = diceArry[i]
             }
         }
-
         for (var i = 0; i < 5; i++) {
             if (diceArry[i] == otherval) {
                 counter++;
             }
         }
-
         if (counter == 2) {
             return 25;
         } else {
@@ -440,7 +475,7 @@ Yahtzee.prototype.CalculateFullHouse = function (diceSet) {
 }
 
 
-Yahtzee.prototype.CalculateUpperSum = function (sumDisplay) {
+Yahtzee.prototype.CalculateUpperSum = function () {
     //ones //twos //threes //fours //fives // six
     var upperArray = [this.GetOnes(), this.GetTwos(), this.GetThrees(), this.GetFours(), this.GetFives(), this.GetSixes()];
     var sum = 0;
@@ -453,8 +488,18 @@ Yahtzee.prototype.CalculateUpperSum = function (sumDisplay) {
 
 }
 
+Yahtzee.prototype.CalcTotalScore = function () {
+    var lowerArray = [this.GetThreeOfAKind(), this.GetFourOfAKind(), this.GetFullHouse(), this.GetSmallStraight(),
+        this.GetLargeStraight(), this.GetChance(), this.GetYahtzee()];
+    var upperSum = this.CalculateUpperSum();
+    var total = 0;
 
-
+    for (var i = 0; i < lowerArray.length; i++) {
+        total += lowerArray[i];
+    }
+    var final = total + upperSum;
+    return(final);
+}
 
 Yahtzee.prototype.CalculateLargeStraight = function (diceSet) {
     var diceArry = [diceSet.getd1(), diceSet.getd2(), diceSet.getd3(), diceSet.getd4(), diceSet.getd5()];
@@ -552,6 +597,12 @@ Yahtzee.prototype.SetScores = function (scoresArr) {
     if (this.largeStraightBool() == false) {
         $("#largeStraightDisplay").text(scoresArr[10]);
     }
+    if (this.chanceBool() == false) {
+        $("#chanceDisplay").text(scoresArr[11]);
+    }
+    if (this.yahtzeeBool() == false) {
+        $("#yahtzeeDisplay").text(scoresArr[12]);
+    }
 }
 
 
@@ -617,8 +668,6 @@ Yahtzee.prototype.CalculateSmallStraight = function (diceSet) {
         return 0;
     }
 }
-
-
 
 Yahtzee.prototype.BubbleSort = function (arr, n) {
     var i, j;
@@ -687,7 +736,10 @@ $("#reset").click(function () {
     $("#fullHouseDisplay").text("");
     $("#smallStraightDisplay").text("");
     $("#largeStraightDisplay").text("");
+    $("#chanceDisplay").text("");
+    $("#yahtzeeDisplay").text("");
     $("#sumDisplay").text("");
+    $("#totalScore").text("");
 
     // Reset Buttons
     $("#btnOnes").removeClass("selectedBtn");
@@ -712,7 +764,10 @@ $("#reset").click(function () {
     $("#btnSmallStraight").removeAttr("disabled");
     $("#btnLargeStraight").removeClass("selectedBtn");
     $("#btnLargeStraight").removeAttr("disabled");
-
+    $("#btnChance").removeClass("selectedBtn");
+    $("#btnChance").removeAttr("disabled");
+    $("#btnYahtzee").removeClass("selectedBtn");
+    $("#btnYahtzee").removeAttr("disabled");
 
     $("#prompt").text("Please roll the dices to continue");
 });
@@ -801,7 +856,7 @@ $("#btnOnes").click(function () {
         scores.SetOnes(ones[0]);
         scores.SetOneSet(true);
         var sum = scores.CalculateUpperSum();
-
+        var total = scores.CalcTotalScore();
 
 
         roll = new DiceSet();
@@ -811,8 +866,10 @@ $("#btnOnes").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnOnes").addClass("selectedBtn");
         $("#btnOnes").attr("disabled", "true");
-        scores.SetZeros();
         $("#sumDisplay").text(sum);
+        $("#totalScore").text(total);
+        scores.SetZeros();
+        
 
     }
 });
@@ -824,6 +881,8 @@ $("#btnTwos").click(function () {
         scores.SetTwos(twos[1]);
         scores.SetTwosSet(true);
         var sum = scores.CalculateUpperSum();
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         roll.setQ();      
@@ -834,6 +893,7 @@ $("#btnTwos").click(function () {
         $("#btnTwos").attr("disabled", "true");
         scores.SetZeros();
         $("#sumDisplay").text(sum);
+        $("#totalScore").text(total);
     }
 });
 
@@ -844,6 +904,9 @@ $("#btnThrees").click(function () {
         scores.SetThrees(threes[2]);
         scores.SetThreeSet(true);
         var sum = scores.CalculateUpperSum();
+        var total = scores.CalcTotalScore();
+
+
 
         roll = new DiceSet();
         roll.setQ();        
@@ -854,6 +917,7 @@ $("#btnThrees").click(function () {
         $("#btnThrees").attr("disabled", "true");
         scores.SetZeros();
         $("#sumDisplay").text(sum);
+        $("#totalScore").text(total);
     }
 });
 
@@ -864,6 +928,8 @@ $("#btnFours").click(function () {
         scores.SetFours(fours[3]);
         scores.SetFoursSet(true);
         var sum = scores.CalculateUpperSum();
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         roll.setQ();
@@ -874,6 +940,7 @@ $("#btnFours").click(function () {
         $("#btnFours").addClass("selectedBtn");
         $("#btnFours").attr("disabled", "true");
         $("#sumDisplay").text(sum);
+        $("#totalScore").text(total);
     }
 });
 
@@ -886,7 +953,7 @@ $("#btnFives").click(function () {
         scores.SetFives(fives[4]);
         scores.SetFivesSet(true);
         var sum = scores.CalculateUpperSum();
-
+        var total = scores.CalcTotalScore();
 
         roll = new DiceSet();
         roll.setQ();
@@ -897,6 +964,7 @@ $("#btnFives").click(function () {
         $("#btnFives").addClass("selectedBtn");
         $("#btnFives").attr("disabled", "true");
         $("#sumDisplay").text(sum);
+        $("#totalScore").text(total);
 
     }
 });
@@ -910,17 +978,22 @@ $("#btnSixes").click(function () {
         scores.SetSixes(sixes[5]);
         scores.SetSixSet(true);
         var sum = scores.CalculateUpperSum();
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         roll.setQ();
-        
+        scores.SetZeros();
         selectedDie = [true, true, true, true, true];
+
+
         $("#roll").addClass("btnAvailable");
         $("#prompt").text("Please roll the dices to continue");
         $("#btnSixes").addClass("selectedBtn");
         $("#btnSixes").attr("disabled", "true");
         $("#sumDisplay").text(sum);
-        scores.SetZeros();       
+        $("#totalScore").text(total);
+               
     }
 });
 
@@ -931,6 +1004,8 @@ $("#btnThreeOfAKind").click(function () {
         var threeOfAKind = scores.CalculateScores(roll);
         scores.SetThreeOfAKind(threeOfAKind[6]);
         scores.SetThreeOfAKindSet(true);
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         scores.SetZeros();
@@ -940,6 +1015,7 @@ $("#btnThreeOfAKind").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnThreeOfAKind").addClass("selectedBtn");
         $("#btnThreeOfAKind").attr("disabled", "true");
+        $("#totalScore").text(total);
     }
 });
 
@@ -950,6 +1026,8 @@ $("#btnFourOfAKind").click(function () {
         var fourOfAKind = scores.CalculateScores(roll);
         scores.SetFourOfAKind(fourOfAKind[7]);
         scores.SetFourOfAKindSet(true);
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         roll.setQ();
@@ -959,6 +1037,7 @@ $("#btnFourOfAKind").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnFourOfAKind").addClass("selectedBtn");
         $("#btnFourOfAKind").attr("disabled", "true");
+        $("#totalScore").text(total);
     }
 });
 
@@ -969,6 +1048,8 @@ $("#btnFullHouse").click(function () {
         var fullHouse = scores.CalculateScores(roll);
         scores.SetFullHouse(fullHouse[8]);
         scores.SetFullHouseSet(true);
+        var total = scores.CalcTotalScore();
+
 
         roll = new DiceSet();
         roll.setQ();
@@ -978,6 +1059,7 @@ $("#btnFullHouse").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnFullHouse").addClass("selectedBtn");
         $("#btnFullHouse").attr("disabled", "true");
+        $("#totalScore").text(total);
     }
 });
 
@@ -988,6 +1070,7 @@ $("#btnSmallStraight").click(function () {
         var smallStraight = scores.CalculateScores(roll);
         scores.SetSmallStraight(smallStraight[9]);
         scores.SetSmallStraightSet(true);
+        var total = scores.CalcTotalScore();
 
         roll = new DiceSet();
         roll.setQ();
@@ -997,6 +1080,7 @@ $("#btnSmallStraight").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnSmallStraight").addClass("selectedBtn");
         $("#btnSmallStraight").attr("disabled", "true");
+        $("#totalScore").text(total);
     }
 });
 
@@ -1006,6 +1090,7 @@ $("#btnLargeStraight").click(function () {
         var largeStraight = scores.CalculateScores(roll);
         scores.SetLargeStraight(largeStraight[10]);
         scores.SetLargeStraightSet(true);
+        var total = scores.CalcTotalScore();
 
         roll = new DiceSet();
         roll.setQ();
@@ -1015,6 +1100,52 @@ $("#btnLargeStraight").click(function () {
         $("#prompt").text("Please roll the dices to continue");
         $("#btnLargeStraight").addClass("selectedBtn");
         $("#btnLargeStraight").attr("disabled", "true");
+        $("#totalScore").text(total);
     }
 });
+
+$("#btnChance").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.chanceBool() == false) {
+        var chance = scores.CalculateScores(roll);
+        scores.SetChance(chance[11]);
+        scores.SetChanceBool(true);
+        
+        var totalScore = scores.CalcTotalScore();
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnChance").addClass("selectedBtn");
+        $("#btnChance").attr("disabled", "true");
+
+        $("#totalScore").text(totalScore);
+    }
+});
+
+$("#btnYahtzee").click(function () {
+    if (roll.rollNumGet() != 0 && roll.rollNumGet() < 4 && scores.yahtzeeBool() == false) {
+        var yahtzee = scores.CalculateScores(roll);
+        scores.SetYahtzee(yahtzee[12]);
+        scores.SetYahtzeeBool(true);
+        var total = scores.CalcTotalScore();
+        
+
+        roll = new DiceSet();
+        roll.setQ();
+        scores.SetZeros();
+        selectedDie = [true, true, true, true, true];
+
+        $("#roll").addClass("btnAvailable");
+        $("#prompt").text("Please roll the dices to continue");
+        $("#btnYahtzee").addClass("selectedBtn");
+        $("#btnYahtzee").attr("disabled", "true");
+        $("#totalScore").text(total);
+    }
+});
+
+
+
 
