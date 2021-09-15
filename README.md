@@ -11,7 +11,7 @@ Selected points will render a green button.
 
 Add multiplayer functionality, using Firebase Realtime Database (out of scope of assignment)
 
-To-Do-Later: 
+To-Do-Later (Out of Scope): 
  - Move logic to server side and use the client side for rending the outputs
  - Add Lightning Authentication
  - Add BTC Lightning Betting Facility
